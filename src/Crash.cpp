@@ -72,5 +72,5 @@ void OnTimer(int value)
 	glutPostRedisplay();
 }
 
-// Probando merge
-//Pruebo merge 2
+//Nuevo merge
+// otra prueba
