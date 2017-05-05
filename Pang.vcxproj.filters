@@ -21,7 +21,7 @@
     <ClCompile Include="src\Crash.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
-    <ClCompile Include="Caja.cpp">
+    <ClCompile Include="src\Caja.cpp">
       <Filter>Archivos de código fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="src\Mundo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Caja.h">
+    <ClInclude Include="src\Caja.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
