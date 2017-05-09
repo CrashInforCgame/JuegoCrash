@@ -32,7 +32,7 @@ void Mundo::Dibuja()
 
 void Mundo::Mueve()
 {
-//hola amigo lol
+//hola amigo lol julio
 //ho buenas
 //
 }
