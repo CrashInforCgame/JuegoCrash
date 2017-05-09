@@ -46,5 +46,6 @@ void Mundo::Inicializa()
 
 void Mundo::Tecla(unsigned char key)
 {
+	//ga
 
 }
