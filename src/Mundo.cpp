@@ -33,6 +33,8 @@ void Mundo::Dibuja()
 void Mundo::Mueve()
 {
 //hola amigo
+//ho buenas
+//
 }
 
 void Mundo::Inicializa()
