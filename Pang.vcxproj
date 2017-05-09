@@ -84,11 +84,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Caja.cpp" />
+    <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Crash.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Caja.h" />
+    <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Mundo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
