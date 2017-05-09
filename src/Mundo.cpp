@@ -32,7 +32,8 @@ void Mundo::Dibuja()
 
 void Mundo::Mueve()
 {
-//hola
+//ho buenas
+//
 }
 
 void Mundo::Inicializa()
