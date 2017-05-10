@@ -4,7 +4,6 @@
 class Personaje
 {
 private:
-
 	unsigned char rojo;
 	unsigned char verde;
 	unsigned char azul;
@@ -16,6 +15,7 @@ private:
 public:
 
 	Personaje();
+	Vector3D GetPos();
 	void Dibuja(void);
 	void Mueve(float);
 	void SetPos(float x, float y, float z);

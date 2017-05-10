@@ -20,6 +20,7 @@ public:
 	void TeclaEspecial(unsigned char key);
 	void Inicializa();
 	void RotarOjo();
+	void SeguirPersonaje();
 	void Mueve();
 	void Dibuja();
 };

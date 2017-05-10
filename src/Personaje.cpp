@@ -52,3 +52,4 @@ void Personaje::Pesaje(void)
 {
 	masa=4*3,14*radio*radio;
 }
+Vector3D Personaje::GetPos(){return posicion;}
