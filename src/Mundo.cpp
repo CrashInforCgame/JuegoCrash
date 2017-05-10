@@ -21,11 +21,19 @@ void Mundo::Dibuja()
 	glDisable(GL_LIGHTING);
 	glBegin(GL_POLYGON);
 		glColor3ub(255,0,0);
-		glVertex3f(-5.0f,0,-5.0f);
+		glVertex3f(-5.0f,0,-30.0f);
 		glVertex3f(-5.0f,0,5.0f);
-		glColor3ub(255,255,0);
+		glColor3ub(255,0,0);
 		glVertex3f(5.0f,0,5.0f);	
-		glVertex3f(5.0f,0,-5.0f);
+		glVertex3f(5.0f,0,-30.0f);
+	glEnd();
+	glBegin(GL_POLYGON);
+		glColor3ub(255,255,0);
+		glVertex3f(5.0f,0,-30.0f);
+		glVertex3f(5.0f,0,-20.0f);
+		glColor3ub(255,255,0);
+		glVertex3f(20.0f,0,-20.0f);	
+		glVertex3f(20.0f,0,-30.0f);
 	glEnd();
 	glEnable(GL_LIGHTING);
 }
