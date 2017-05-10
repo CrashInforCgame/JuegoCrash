@@ -8,9 +8,6 @@ public:		//atributos
 	float z;
 public:		//metodos
 	Vector3D(float xv=0.0f,float yv=0.0f, float zv=0.0f); // (1)
-	float modulo(); // (2) modulo del vector
-	float argumento(); // (3) argumento del vector
-	Vector3D Unitario(); // (4) devuelve un vector unitario
 	Vector3D operator - (Vector3D &); // (5) resta de vectores
 	Vector3D operator + (Vector3D &); // (6) suma de vectores
 	float operator *(Vector3D &); // (7) producto escalar

@@ -21,7 +21,6 @@ void Mundo::Dibuja()
 	//dibujo del suelo
 	escenario.Dibuja();
 	personaje.Dibuja();
-
 }
 
 void Mundo::Mueve()
@@ -34,37 +33,26 @@ void Mundo::Inicializa()
 	x_ojo=0;
 	y_ojo=10;
 	z_ojo=20;
-
-	personaje.SetColor(400,400,255);
-	personaje.SetRadio(0.5f);
-	personaje.SetPos(0,0,0);
-	personaje.SetVel(0,0,0);
 	
 }
 
 void Mundo::Tecla(unsigned char key)
 {
+
 	switch(key)
 	{
 	case GLUT_KEY_LEFT:
-		personaje.SetVel(-1.0f,0.0f, 0.0f);
-		personaje.SetColor(0,255,255);
+		personaje.SetVel(-3.0f,0,0);
 		break;
 	case GLUT_KEY_RIGHT:
-		personaje.SetVel(1.0f, 0.0f, 0.0f);
+		personaje.SetVel(3.0f,0,0);
 		break;
 	case GLUT_KEY_UP:
-		personaje.SetVel(0.0f,0.0f,-1.0f);
+		personaje.SetVel(0,0,-3.0f);
 		break;
 	case GLUT_KEY_DOWN:
-		personaje.SetVel(0.0f,0.0f,1.0f);
+		personaje.SetVel(0,0,3.0f);
 		break;
 	}
-}
-
-void Mundo::teclaEspecial(unsigned char key)
-{
-	if(key=='A')
-		personaje.SetColor(0,0,255);
 }
 
