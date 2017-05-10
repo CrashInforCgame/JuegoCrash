@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "glut.h"
 
+
 Mundo mundo;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
@@ -9,6 +10,9 @@ Mundo mundo;
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
+
+// void onSpecialKeyboardDown(int key, int x, int y); // Para teclas especiales como el cursor
+// Nos esta dando error LNK2019
 
 int main(int argc,char* argv[])
 {
@@ -31,6 +35,12 @@ int main(int argc,char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
+	// glutSpecialFunc(onSpecialKeyboardDown); 
+	// El callback de teclas especiales No nos funciona
+
+
+	// Nuestro código para inicializar cosas ajenas a glut
+
 
 	mundo.Inicializa();
 		
@@ -44,11 +54,12 @@ void OnDraw(void)
 {
 	//Borrado de la pantalla	
    	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	//Para definir el punto de vista
 	glMatrixMode(GL_MODELVIEW);	
 	glLoadIdentity();
 	
+
+
 	mundo.Dibuja();
 
 	//no borrar esta linea ni poner nada despues
@@ -61,6 +72,13 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 
 	glutPostRedisplay();
 }
+
+/*void OnSpecialKeyboardDown(int key, int x_t, int y_t) 
+{
+	mundo.TeclaEspecial(key);
+
+	glutPostRedisplay();
+}*/  //Lo quito porque da error
 
 void OnTimer(int value)
 {

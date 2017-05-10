@@ -46,7 +46,7 @@ void Personaje::Mueve(float t)
 {
 	posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
 	velocidad = velocidad+aceleracion*t;
-	sprite.loop();
+//	sprite.loop();
 }
 void Personaje::Pesaje(void)
 {

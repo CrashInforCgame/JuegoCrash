@@ -25,7 +25,7 @@ void Mundo::Dibuja()
 
 void Mundo::Mueve()
 {
-	personaje.Mueve(0.025F);
+	personaje.Mueve(0.025f);
 }
 
 void Mundo::Inicializa()
@@ -37,6 +37,28 @@ void Mundo::Inicializa()
 }
 
 void Mundo::Tecla(unsigned char key)
+{
+	switch(key)
+	{
+	case 'a':
+	case 'A':
+		personaje.SetVel(-3.0f,0,0);
+		break;
+	case 'd':
+	case'D':
+		personaje.SetVel(3.0f,0,0);
+		break;
+	case 'w':
+	case 'W':
+		personaje.SetVel(0,0,-3.0f);
+		break;
+	case 's':
+	case 'S':
+		personaje.SetVel(0,0,3.0f);
+		break;
+	}
+}
+void Mundo::TeclaEspecial(unsigned char key)
 {
 
 	switch(key)
