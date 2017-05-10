@@ -84,17 +84,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Caja.cpp" />
+    <ClCompile Include="src\Escenario.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Crash.cpp" />
     <ClCompile Include="src\Personaje.cpp" />
+    <ClCompile Include="src\Suelo.cpp" />
     <ClCompile Include="src\Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Caja.h" />
+    <ClInclude Include="src\Escenario.h" />
     <ClInclude Include="src\Menu.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Personaje.h" />
+    <ClInclude Include="src\Suelo.h" />
     <ClInclude Include="src\Vector3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
