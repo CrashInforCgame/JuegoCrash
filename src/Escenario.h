@@ -1,10 +1,11 @@
 #pragma once
 #include "Suelo.h" 
 
-class Caja
+class Escenario
 {
 public:
-
+	Escenario();
+	void Dibuja(void);
 private:
 	Suelo suelo1;
 	Suelo suelo2;
