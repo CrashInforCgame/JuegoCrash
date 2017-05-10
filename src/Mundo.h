@@ -1,5 +1,7 @@
+#pragma once
 #include"Escenario.h"
 #include"Personaje.h"
+#include "Caja.h"
 
 class Mundo
 {
@@ -10,6 +12,9 @@ class Mundo
 	Escenario escenario;
 	Personaje personaje;
 	Personaje personaje2;
+	Caja caja1;
+	Caja caja2;
+	Caja caja3;
 public: 
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);

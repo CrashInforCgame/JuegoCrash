@@ -3,16 +3,7 @@
 
 class Personaje
 {
-public:
-
-	Personaje();
-	void Dibuja(void);
-	void Mueve(float);
-	void SetPos(float x, float y, float z);
-	void SetVel(float vx, float vy, float vz);
-	void Pesaje(void);
-
-public:
+private:
 
 	unsigned char rojo;
 	unsigned char verde;
@@ -22,5 +13,15 @@ public:
 	Vector3D posicion;
 	Vector3D velocidad;
 	Vector3D aceleracion;
+public:
+
+	Personaje();
+	void Dibuja(void);
+	void Mueve(float);
+	void SetPos(float x, float y, float z);
+	void SetVel(float vx, float vy, float vz);
+	void Pesaje(void);
+
+
 
 };

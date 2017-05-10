@@ -1,5 +1,6 @@
 #include "Mundo.h"
 #include "Escenario.h"
+#include "Caja.h"
 #include "glut.h"
 #include <math.h>
 
@@ -21,6 +22,9 @@ void Mundo::Dibuja()
 	//dibujo del suelo
 	escenario.Dibuja();
 	personaje.Dibuja();
+	caja1.Dibuja();
+	caja2.Dibuja();
+	caja3.Dibuja();
 }
 
 void Mundo::Mueve()
@@ -34,6 +38,10 @@ void Mundo::Inicializa()
 	y_ojo=10;
 	z_ojo=20;
 	
+	caja1.SetPos(4.5,0.5,-5);
+	caja2.SetPos(4.5,1.5,-5);
+	caja3.SetPos(2.5,0.5,-2);
+
 }
 
 void Mundo::Tecla(unsigned char key)
