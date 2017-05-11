@@ -6,7 +6,7 @@ Personaje::Personaje(void)
 {
 	radio=1.0f;
 	aceleracion.x=0;
-	aceleracion.y=0;
+	aceleracion.y=-2;
 	aceleracion.z=0;
 	velocidad.x=0;
 	velocidad.y=0;
@@ -15,7 +15,7 @@ Personaje::Personaje(void)
 	verde=0;
 	azul=255;
 	posicion.x=0;
-	posicion.y=0;
+	posicion.y=4+radio;
 	posicion.z=0;
 }
 
@@ -42,10 +42,28 @@ void Personaje::Dibuja()
 	glTranslatef(-posicion.x,-posicion.y,-posicion.z);
 }
 
-void Personaje::Mueve(float t)
+void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra que poner esto de forma más
+							// simplificada como en lo comentado abajo
 {
-	posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
+	posicion.x = posicion.x+velocidad.x*t+aceleracion.x*(0.5f*t*t);
+	posicion.y = posicion.y+velocidad.y*t+aceleracion.y*(0.5f*t*t);
+	posicion.z = posicion.z+velocidad.z*t+aceleracion.z*(0.5f*t*t);
+	velocidad.x = velocidad.x+aceleracion.x*t;
+	velocidad.z = velocidad.z+aceleracion.z*t;
+	if(posicion.y<=radio)
+	{
+		velocidad.y=0;
+		aceleracion.y=0;
+	}
+	else
+	{
+		velocidad.y = velocidad.y+aceleracion.y*t;
+		aceleracion.y=-2;
+	}
+	/*posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
 	velocidad = velocidad+aceleracion*t;
+	if(posicion.y==0)
+		velocidad.y=0;*/
 //	sprite.loop();
 }
 void Personaje::Pesaje(void)

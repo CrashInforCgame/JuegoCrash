@@ -82,9 +82,11 @@ void Mundo::Tecla(unsigned char key)
 	case 'S':
 		personaje.SetVel(0,0,3.0f);
 		break;
-	case ' ': // Para el salto
-		personaje.SetVel(0,3.0,0);
-		break;
+	case 'n':
+	case 'N':// Para el salto
+		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
+		personaje.SetVel(0,3.0,0);//para ello he tenido que poner en public el Vector3D posicion
+		break;						//en personaje.h-->Buscar otra alternativa
 	}
 }
 void Mundo::TeclaEspecial(unsigned char key)
