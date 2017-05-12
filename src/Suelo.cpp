@@ -39,11 +39,22 @@ void Suelo::SetPos(float x1, float y1, float z1,float x2, float y2, float z2,flo
 	limite4.z=z4;
 
 }
-float Suelo::distancia_plano(Personaje &h) // Hallamos el vector normal al plano haciendo el producto vectorial de dos vectores que estan en este y normalizando
-	// Luego hallamos un vector que vaya del personaje a un punto del plano (Cogemos algun punto limite1 o limite2 de esos)
-	// Por ultimo proyectamos ese vector sobre la normal al plano para tener la distancia (Producto escalar)
+Vector3D Suelo::v_distancia_plano(Personaje &h)  // Este nos da el vector de la distancia mas corta entre el personaje y el plano
 {
 	Vector3D Pos_personaje = h.GetPos();
+	Vector3D pnj_plano = Pos_personaje-limite1; 
+	Vector3D v_plano1= limite1-limite2;
+	Vector3D v_plano2= limite1-limite3;
+	Vector3D normal = v_plano1.pvectorial(v_plano2).unitario(); // Aqui sacamos la normal al plano
+	Vector3D v_distancia = normal*(pnj_plano*normal);
+	return v_distancia;
+}
+
+float Suelo::distancia_plano(Personaje &h){ // Hallamos el vector normal al plano haciendo el producto vectorial de dos vectores que estan en este y normalizando
+	// Luego hallamos un vector que vaya del personaje a un punto del plano (Cogemos algun punto limite1 o limite2 de esos)
+	// Por ultimo proyectamos ese vector sobre la normal al plano para tener la distancia (Producto escalar)
+	
+    Vector3D Pos_personaje = h.GetPos();
 	Vector3D pnj_plano = Pos_personaje-limite1; 
 	Vector3D v_plano1= limite1-limite2;
 	Vector3D v_plano2= limite1-limite3;
@@ -51,14 +62,37 @@ float Suelo::distancia_plano(Personaje &h) // Hallamos el vector normal al plano
 	float distancia = abs(pnj_plano*normal);
 	return distancia;
 }
+//ESTA VERSION QUE ESTA ENTRE CORCHETES SOLO FUNCIONA PARA PLANOS CON Y CONSTANTE, CON RAMPAS NO FUNCIONA BIENHAY UN FALLO AL PLANTEARLO
+
 float Suelo::Ypuntoplano(Personaje &h) // Para obtener el punto del plano sobre el que el personaje luego proyecta en Y    
 		// Podría servir para saber el punto donde tenemos que dejar el personaje si este se mueve por un plano inclinado
 {
 	Vector3D Pos_personaje = h.GetPos();
 	Vector3D pnj_plano = Pos_personaje-limite1; 
+	Vector3D v_plano1= limite1-limite2;
+	Vector3D v_plano2= limite1-limite3;
+	Vector3D normal = v_plano1.pvectorial(v_plano2).unitario(); // Aqui sacamos la normal al plano
 	Vector3D Ny(0,1,0); // Proyectaremos sobre Y para saber la distancia entre nuestro personaje y la proyeccion en el plano con la misma Y que el personaje
 	Vector3D dist_pnj_plano = Ny*(pnj_plano*Ny);
 	Vector3D puntoplano = Pos_personaje-dist_pnj_plano; // Debería dar el punto Y donde dejaremos fijo ya al personaje
 	float puntoY= puntoplano.y;
 	return puntoY;
 }
+
+ //ESTE ÚLTIMO DEBERÍA FUNCIONAR PERO DA MUCHOS FALLOS EN LA CAMARA, POR TANTO LO DEJAMOS COMENTADO Y PREGUNTAMOS ALGUN DIA EN TUTORIA
+
+/*
+float Suelo::Ypuntoplano(Personaje &h) 
+
+{
+	Suelo estesuelo= *this;
+	Vector3D distancia_plano = estesuelo.v_distancia_plano(h);
+	Vector3D Ny(0,1,0);
+	float a= Ny*distancia_plano;
+    float angulo = distancia_plano.angulo_con_vector(Ny);
+	float dist = estesuelo.distancia_plano(h);
+	float distancia_y = abs(dist/cos(angulo));
+	return distancia_y;
+}
+*/
+

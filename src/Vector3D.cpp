@@ -71,3 +71,9 @@ Vector3D Vector3D::pvectorial(Vector3D v)
 	return resultado;
 
 }
+float Vector3D::angulo_con_vector(Vector3D v)
+{
+	Vector3D copia = *this;
+	float angulo = acos((copia*v)/((copia.modulo())*(v.modulo()))); 
+	return angulo;
+}
