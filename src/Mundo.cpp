@@ -98,6 +98,7 @@ void Mundo::Tecla(unsigned char key)
 		break;
 	case 'n':
 	case 'N':// Para el salto
+	case ' ':
 		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
 		personaje.SetVel(6.0f);//para ello he tenido que poner en public el Vector3D posicion
 		break;						//en personaje.h-->Buscar otra alternativa

@@ -1,5 +1,6 @@
 #include "Suelo.h"
 #include "glut.h"
+#include "math.h"
 
 void Suelo::setColor( unsigned char r,unsigned char v, unsigned char a)
 {
@@ -37,4 +38,16 @@ void Suelo::SetPos(float x1, float y1, float z1,float x2, float y2, float z2,flo
 	limite4.y=y4;
 	limite4.z=z4;
 
+}
+float Suelo::distancia(Personaje &h) // Hallamos el vector normal al plano haciendo el producto vectorial de dos vectores que estan en este y normalizando
+	// Luego hallamos un vector que vaya del personaje a un punto del plano (Cogemos algun punto limite1 o limite2 de esos)
+	// Por ultimo proyectamos ese vector sobre la normal al plano para tener la distancia (Producto escalar)
+{
+	Vector3D Pos_personaje = h.GetPos();
+	Vector3D pnj_plano = Pos_personaje-limite1; 
+	Vector3D v_plano1= limite1-limite2;
+	Vector3D v_plano2= limite1-limite3;
+	Vector3D normal = v_plano1.pvectorial(v_plano2).unitario(); // Aqui sacamos la normal al plano
+	float distancia = abs(pnj_plano*normal);
+	return distancia;
 }
