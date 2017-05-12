@@ -86,7 +86,7 @@ void OnTimer(int value)
 	mundo.Mueve();
 
 	//no borrar estas lineas
-	glutTimerFunc(25,OnTimer,0);
+	glutTimerFunc(1,OnTimer,0);
 	glutPostRedisplay();
 }
 

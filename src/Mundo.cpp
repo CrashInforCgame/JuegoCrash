@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "Escenario.h"
 #include "Caja.h"
+#include"Interaccion.h"
 #include "glut.h"
 #include <math.h>
 
@@ -46,7 +47,8 @@ void Mundo::Dibuja()
 
 void Mundo::Mueve()
 {
-	personaje.Mueve(0.025f);
+	personaje.Mueve(0.005f);
+	Interaccion::rebote(personaje,escenario);
 	SeguirPersonaje(); // Desactivar para no seguirlo
 }
 
@@ -62,50 +64,61 @@ void Mundo::Inicializa()
 
 }
 
+
 void Mundo::Tecla(unsigned char key)
 {
+	/*if(key=='a')
+		personaje.SetDesplazamiento(-0.03f,0);
+	if(key=='d')
+		personaje.SetDesplazamiento(0.03f,0);
+	if(key=='w')
+		personaje.SetDesplazamiento(0,-0.03f);
+	if(key=='s')
+		personaje.SetDesplazamiento(0,-0.03f);*/
+	if(key==('b'))
+		personaje.SetDesplazamiento(3,-3.0f);
 	switch(key)
 	{
 	case 'a':
 	case 'A':
-		personaje.SetVel(-3.0f,0,0);
+		personaje.SetDesplazamiento(-0.25f,0);
 		break;
 	case 'd':
 	case'D':
-		personaje.SetVel(3.0f,0,0);
+		personaje.SetDesplazamiento(0.25f,0);
 		break;
 	case 'w':
 	case 'W':
-		personaje.SetVel(0,0,-3.0f);
+		personaje.SetDesplazamiento(0,-0.25f);
 		break;
 	case 's':
 	case 'S':
-		personaje.SetVel(0,0,3.0f);
+		personaje.SetDesplazamiento(0,0.25f);
 		break;
 	case 'n':
 	case 'N':// Para el salto
 		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
-		personaje.SetVel(0,3.0,0);//para ello he tenido que poner en public el Vector3D posicion
+		personaje.SetVel(3.0f);//para ello he tenido que poner en public el Vector3D posicion
 		break;						//en personaje.h-->Buscar otra alternativa
 	}
 }
+
 void Mundo::TeclaEspecial(unsigned char key)
 {
 
 	switch(key)
 	{
 	case GLUT_KEY_LEFT:
-		personaje.SetVel(-3.0f,0,0);
+		personaje.SetDesplazamiento(-1.0f,0);
 		break;
 	case GLUT_KEY_RIGHT:
-		personaje.SetVel(3.0f,0,0);
+		personaje.SetDesplazamiento(1.0f,0);
 		break;
 	case GLUT_KEY_UP:
-		personaje.SetVel(0,0,-3.0f);
+		personaje.SetDesplazamiento(0,-1.0f);
 		break;
 	case GLUT_KEY_DOWN:
-		personaje.SetVel(0,0,3.0f);
+		personaje.SetDesplazamiento(0,1.0f);
 		break;
 	}
 }
-

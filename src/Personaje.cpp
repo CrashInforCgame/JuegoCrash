@@ -6,7 +6,7 @@ Personaje::Personaje(void)
 {
 	radio=1.0f;
 	aceleracion.x=0;
-	aceleracion.y=-2;
+	aceleracion.y=-2.0f;
 	aceleracion.z=0;
 	velocidad.x=0;
 	velocidad.y=0;
@@ -27,11 +27,15 @@ void Personaje::SetPos(float ix, float iy, float iz)
 	posicion.z=iz;
 }
 
-void Personaje::SetVel(float vx, float vy, float vz)
+void Personaje::SetVel(float vy)
 {
-	velocidad.x=vx;
 	velocidad.y=vy;
-	velocidad.z=vz;
+
+}
+void Personaje::SetDesplazamiento(float px, float pz)
+{
+	posicion.x = posicion.x + px;
+	posicion.z = posicion.z + pz;
 }
 
 void Personaje::Dibuja()
@@ -45,11 +49,8 @@ void Personaje::Dibuja()
 void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra que poner esto de forma más
 							// simplificada como en lo comentado abajo
 {
-	posicion.x = posicion.x+velocidad.x*t+aceleracion.x*(0.5f*t*t);
+
 	posicion.y = posicion.y+velocidad.y*t+aceleracion.y*(0.5f*t*t);
-	posicion.z = posicion.z+velocidad.z*t+aceleracion.z*(0.5f*t*t);
-	velocidad.x = velocidad.x+aceleracion.x*t;
-	velocidad.z = velocidad.z+aceleracion.z*t;
 	if(posicion.y<=radio)
 	{
 		velocidad.y=0;
