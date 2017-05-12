@@ -39,7 +39,7 @@ void Suelo::SetPos(float x1, float y1, float z1,float x2, float y2, float z2,flo
 	limite4.z=z4;
 
 }
-float Suelo::distancia(Personaje &h) // Hallamos el vector normal al plano haciendo el producto vectorial de dos vectores que estan en este y normalizando
+float Suelo::distancia_plano(Personaje &h) // Hallamos el vector normal al plano haciendo el producto vectorial de dos vectores que estan en este y normalizando
 	// Luego hallamos un vector que vaya del personaje a un punto del plano (Cogemos algun punto limite1 o limite2 de esos)
 	// Por ultimo proyectamos ese vector sobre la normal al plano para tener la distancia (Producto escalar)
 {
@@ -50,4 +50,15 @@ float Suelo::distancia(Personaje &h) // Hallamos el vector normal al plano hacie
 	Vector3D normal = v_plano1.pvectorial(v_plano2).unitario(); // Aqui sacamos la normal al plano
 	float distancia = abs(pnj_plano*normal);
 	return distancia;
+}
+float Suelo::Ypuntoplano(Personaje &h) // Para obtener el punto del plano sobre el que el personaje luego proyecta en Y
+		// Podría servir para saber el punto donde tenemos que dejar el personaje si este se mueve por un plano inclinado
+{
+	Vector3D Pos_personaje = h.GetPos();
+	Vector3D pnj_plano = Pos_personaje-limite1; 
+	Vector3D Ny(0,1,0); // Proyectaremos sobre Y para saber la distancia entre nuestro personaje y la proyeccion en el plano con la misma Y que el personaje
+	Vector3D dist_pnj_plano = Ny*(pnj_plano*Ny);
+	Vector3D puntoplano = Pos_personaje-dist_pnj_plano; // Debería dar el punto Y donde dejaremos fijo ya al personaje
+	float puntoY= puntoplano.y;
+	return puntoY;
 }

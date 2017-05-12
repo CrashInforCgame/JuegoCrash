@@ -35,6 +35,7 @@ void Interaccion::rebote(Personaje &h, Escenario c)
 	}
 	if(j==2)
 	{
+		float yplano=c.suelo2.Ypuntoplano(h);
 		float xmax=c.suelo2.limite3.x;
 		float xmin=c.suelo1.limite1.x;
 		float zmax=c.suelo2.limite2.z;
@@ -43,6 +44,7 @@ void Interaccion::rebote(Personaje &h, Escenario c)
 		if(h.posicion.x<xmin)h.posicion.x=xmin;
 		if(h.posicion.z>zmax)h.posicion.z=zmax;
 		if(h.posicion.z<zmin)h.posicion.z=zmin;
+		if(yplano>h.posicion.y)h.posicion.y=yplano;  //PARA QUE NO SE CAIGA DEL PLANO
 	}
 	if(j==3)
 	{
@@ -84,13 +86,14 @@ void Interaccion::rebote(Personaje &h, Suelo s) //ESTA FUNCION ESTARÍA PLANTEADA
 {
 		float xmax=s.limite3.x;
 		float xmin=s.limite2.x;
-		float ymin=s.limite1.y; // ESTO FUNCIONA SIEMPRE QUE SEAN PLANOS CON Y CONSTANTE SOLO
+		float yplano=s.Ypuntoplano(h); // Esta funcion nos da la Y para que no caiga
+	// float ymin=s.limite1.y; // ESTO FUNCIONA SIEMPRE QUE SEAN PLANOS CON Y CONSTANTE SOLO
 		float zmax=s.limite2.z;
 		float zmin=s.limite1.z;
 		if(h.posicion.x>xmax)h.posicion.x=xmax;
 		if(h.posicion.x<xmin)h.posicion.x=xmin;
-		if(h.posicion.y<ymin)h.posicion.x=ymin; //PARA LA Y
+	// if(h.posicion.y<ymin)h.posicion.x=ymin; //PARA LA Y
 		if(h.posicion.z>zmax)h.posicion.z=zmax;
 		if(h.posicion.z<zmin)h.posicion.z=zmin;
-
+		if(yplano>h.posicion.y)h.posicion.y= yplano;  //PARA QUE NO SE CAIGA DEL PLANO
 }

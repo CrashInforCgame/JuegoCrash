@@ -63,7 +63,8 @@ void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra q
 	} */
 	posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
 	velocidad = velocidad+aceleracion*t;
-	if(posicion.y<0)posicion.y=0; // Para que de momento no caiga por la gravedad al vacio, hay que hacer un collider con suelos
+	//if(posicion.y<0)posicion.y=0; // Para que de momento no caiga por la gravedad al vacio, hay que hacer un collider con suelos
+
 }
 void Personaje::Pesaje(void)
 {

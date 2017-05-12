@@ -18,7 +18,9 @@ public:
 	void setColor(unsigned char rojo, unsigned char verde, unsigned char azul);
 	void SetPos(float x1, float y1, float z1,float x2, float y2, float z2,float x3, float y3,
 				 float z3,float x4, float y4, float z4);
-	float distancia(Personaje &h); // Lo usaremos para saber evitar que el personaje caiga del plano
+	float distancia_plano(Personaje &h); // Halla distancias al plano
+	float Ypuntoplano(Personaje &h); // Para obtener la Y del punto del plano sobre el que el personaje luego proyecta en Y
+		// Podría servir para saber el punto donde tenemos que dejar el personaje si este se mueve por un plano inclinado
 	friend class Interaccion;
 };
 
