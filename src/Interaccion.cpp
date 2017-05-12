@@ -87,3 +87,17 @@ void Interaccion::rebote(Personaje &h, Escenario c)
 }
 
 
+void Interaccion::rebote(Personaje &h, Suelo s) //ESTA FUNCION ESTARÍA PLANTEADA BIEN SOLO PARA SUELOS PLANOS
+{
+		float xmax=s.limite3.x;
+		float xmin=s.limite2.x;
+		float ymin=s.limite1.y; // ESTO FUNCIONA SIEMPRE QUE SEAN PLANOS EN UNA Y FIJA
+		float zmax=s.limite2.z;
+		float zmin=s.limite1.z;
+		if(h.posicion.x>xmax)h.posicion.x=xmax;
+		if(h.posicion.x<xmin)h.posicion.x=xmin;
+		if(h.posicion.y<ymin)h.posicion.x=ymin; //PARA LA Y
+		if(h.posicion.z>zmax)h.posicion.z=zmax;
+		if(h.posicion.z<zmin)h.posicion.z=zmin;
+
+}

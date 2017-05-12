@@ -10,4 +10,5 @@ public:
 	Interaccion();
 	virtual ~Interaccion();
 	static void rebote(Personaje &h, Escenario c);
+	static void rebote(Personaje &h, Suelo s);
 };

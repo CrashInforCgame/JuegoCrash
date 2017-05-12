@@ -6,7 +6,7 @@ Personaje::Personaje(void)
 {
 	radio=1.0f;
 	aceleracion.x=0;
-	aceleracion.y=-2.0f;
+	aceleracion.y=-9.8f;
 	aceleracion.z=0;
 	velocidad.x=0;
 	velocidad.y=0;
@@ -50,7 +50,7 @@ void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra q
 							// simplificada como en lo comentado abajo
 {
 
-	posicion.y = posicion.y+velocidad.y*t+aceleracion.y*(0.5f*t*t);
+	/* posicion.y = posicion.y+velocidad.y*t+aceleracion.y*(0.5f*t*t);
 	if(posicion.y<=radio)
 	{
 		velocidad.y=0;
@@ -60,12 +60,10 @@ void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra q
 	{
 		velocidad.y = velocidad.y+aceleracion.y*t;
 		aceleracion.y=-2;
-	}
-	/*posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
+	} */
+	posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
 	velocidad = velocidad+aceleracion*t;
-	if(posicion.y==0)
-		velocidad.y=0;*/
-//	sprite.loop();
+	if(posicion.y<0)posicion.y=0; // Para que de momento no caiga por la gravedad al vacio, hay que hacer un collider con suelos
 }
 void Personaje::Pesaje(void)
 {

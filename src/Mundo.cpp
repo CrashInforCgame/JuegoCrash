@@ -47,7 +47,8 @@ void Mundo::Dibuja()
 
 void Mundo::Mueve()
 {
-	personaje.Mueve(0.005f);
+	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
+	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebote(personaje,escenario);
 	SeguirPersonaje(); // Desactivar para no seguirlo
 }
@@ -98,7 +99,7 @@ void Mundo::Tecla(unsigned char key)
 	case 'n':
 	case 'N':// Para el salto
 		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
-		personaje.SetVel(3.0f);//para ello he tenido que poner en public el Vector3D posicion
+		personaje.SetVel(6.0f);//para ello he tenido que poner en public el Vector3D posicion
 		break;						//en personaje.h-->Buscar otra alternativa
 	}
 }

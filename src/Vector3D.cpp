@@ -45,3 +45,29 @@ Vector3D Vector3D::operator *(float k)
 	res.z = z*k;
 	return res;
 }
+float Vector3D::modulo()
+{
+	return (float)sqrt(x*x+y*y+z*z);
+}
+
+Vector3D Vector3D::unitario()
+{
+	Vector3D retorno(x,y,z);
+	float mod=modulo();
+	if(mod>0.00001)
+	{
+		retorno.x/=mod;
+		retorno.y/=mod;
+		retorno.z/=mod;
+	}
+	return retorno;
+}
+Vector3D Vector3D::pvectorial(Vector3D v)
+{
+	Vector3D resultado;
+	resultado.x=y*v.z-z*v.y;
+	resultado.y=-(x*v.z-z*v.x);
+	resultado.z=x*v.y-y*v.x;
+	return resultado;
+
+}
