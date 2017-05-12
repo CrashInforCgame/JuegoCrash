@@ -8,7 +8,6 @@ class Mundo
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
-
 	Escenario escenario;
 	Personaje personaje;
 	Personaje personaje2;

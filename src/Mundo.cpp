@@ -49,7 +49,6 @@ void Mundo::Mueve()
 {
 	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
 	Interaccion::rebote(personaje,escenario);
-	Interaccion::rebote(personaje,escenario);
 	SeguirPersonaje(); // Desactivar para no seguirlo
 }
 

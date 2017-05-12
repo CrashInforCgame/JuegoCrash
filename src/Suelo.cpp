@@ -51,7 +51,7 @@ float Suelo::distancia_plano(Personaje &h) // Hallamos el vector normal al plano
 	float distancia = abs(pnj_plano*normal);
 	return distancia;
 }
-float Suelo::Ypuntoplano(Personaje &h) // Para obtener el punto del plano sobre el que el personaje luego proyecta en Y
+float Suelo::Ypuntoplano(Personaje &h) // Para obtener el punto del plano sobre el que el personaje luego proyecta en Y    
 		// Podría servir para saber el punto donde tenemos que dejar el personaje si este se mueve por un plano inclinado
 {
 	Vector3D Pos_personaje = h.GetPos();

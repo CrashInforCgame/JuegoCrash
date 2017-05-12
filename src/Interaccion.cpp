@@ -87,7 +87,7 @@ void Interaccion::rebote(Personaje &h, Escenario c)
 }
 
 
-void Interaccion::rebote(Personaje &h, Suelo s) //ESTA FUNCION ESTARÍA PLANTEADA BIEN SOLO PARA SUELOS PLANOS
+void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
 {
 		float xmax=s.limite3.x;
 		float xmin=s.limite2.x;
