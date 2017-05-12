@@ -32,7 +32,12 @@ void Interaccion::rebote(Personaje &h, Escenario c)
 	if(j==1)
 	{
 		rebote(h,c.suelo1); //PODEMOS INTENTAR SIMPLIFICAR EL RESTO DE ALGUNA FORMA PARECIDA
+		// ESTA FUNCION YA ESTA HECHA PARA QUE SE VEA LA ESFERA ENTERA
+							
 	}
+
+	// EN J=2 NO SE VERA LA ESFERA ENTERA. SE VERA MEDIA. EN EL RESTO NO HE AÑADIDO EL ULTIMO CONDICIONAL QUE EVITA QUE NO CAIGA
+
 	if(j==2)
 	{
 		float yplano=c.suelo2.Ypuntoplano(h);
@@ -86,7 +91,8 @@ void Interaccion::rebote(Personaje &h, Suelo s) //ESTA FUNCION ESTARÍA PLANTEADA
 {
 		float xmax=s.limite3.x;
 		float xmin=s.limite2.x;
-		float yplano=s.Ypuntoplano(h); // Esta funcion nos da la Y para que no caiga
+		float yplano=s.Ypuntoplano(h); // Esta funcion nos da la Y DEL PLANO EN ESA COORDENADA para que no caiga
+		float ypersonaje=yplano+h.radio; //PARA QUE SE VEA EL RADIO ENTERO LUEGO
 	// float ymin=s.limite1.y; // ESTO FUNCIONA SIEMPRE QUE SEAN PLANOS CON Y CONSTANTE SOLO
 		float zmax=s.limite2.z;
 		float zmin=s.limite1.z;
@@ -95,5 +101,6 @@ void Interaccion::rebote(Personaje &h, Suelo s) //ESTA FUNCION ESTARÍA PLANTEADA
 	// if(h.posicion.y<ymin)h.posicion.x=ymin; //PARA LA Y
 		if(h.posicion.z>zmax)h.posicion.z=zmax;
 		if(h.posicion.z<zmin)h.posicion.z=zmin;
-		if(yplano>h.posicion.y)h.posicion.y= yplano;  //PARA QUE NO SE CAIGA DEL PLANO
+		if(ypersonaje>h.posicion.y)h.posicion.y= ypersonaje;  //PARA QUE NO SE CAIGA DEL PLANO Y SE VEA LA ESFERA ENTERA
+		// YPERSONAJE está cogido como la y del plano + el radio
 }
