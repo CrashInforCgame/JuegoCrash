@@ -19,31 +19,26 @@ void Interaccion::rebotecaja(Personaje &h, Caja c)
 	float zmin=c.posicion.z-c.lado/2-h.radio;
 	float zmax=c.posicion.z+c.lado/2+h.radio;
 	float ymax=c.posicion.y+c.lado/2+h.radio;
+	
 	float x=h.posicion.x;
 	float y=h.posicion.y;
 	float z=h.posicion.z;
-	if((z>zmin && z<zmax) || (z>zmin && z<zmax))
-		if((x>xmin && x<xmax) || (x>xmin && x<xmax))
+
+
+	if((z>zmin && z<zmax) && (x>xmin && x<xmax))
 		{
-			if(ymax>=h.posicion.y)
+			if(ymax>=h.posicion.y)  // En caso de estar a la altura de la caja, ya estando en los limites establecidos de x y z
+				// si no no se activan colisiones
 			{
 				if((c.posicion.x)>(x+h.radio))h.posicion.x=xmin;
 				if((c.posicion.x)<(x-h.radio))h.posicion.x=xmax;
-			}
-			else
-				h.posicion.y=ymax;
-		}
-	if((x>xmin && x<xmax)|| (x>xmin && x<xmax))
-		if((z>zmin && z<zmax) || (z>zmin && z<zmax))
-		{
-			if(ymax>=h.posicion.y)
-			{
 				if((c.posicion.z)>(z+h.radio))h.posicion.z=zmin;
 				if((c.posicion.z)<(z-h.radio))h.posicion.z=zmax;
+				if((c.posicion.y)<(y-h.radio))h.posicion.y=ymax; // Para que caiga encima de la caja si esta entre los limites y su y encima de ella
+				// Como antes se activan todos los limitadores de posicion nunca va a meterse el personaje dentro de una caja por error
 			}
-			else
-				h.posicion.y=ymax;
 		}
+	
 }
 void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
 {
