@@ -51,19 +51,14 @@ void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra q
 {
 
 	posicion.y = posicion.y+velocidad.y*t+aceleracion.y*(0.5f*t*t);
-	if(posicion.y<=radio)
-	{
-		velocidad.y=0;
-		aceleracion.y=0;
-	}
-	else
+	if(posicion.y>radio)
 	{
 		velocidad.y = velocidad.y+aceleracion.y*t;
 		aceleracion.y=-2;
 	} 
 	/*posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
 	velocidad = velocidad+aceleracion*t;*/
-	if(posicion.y<0)posicion.y=0; // Para que de momento no caiga por la gravedad al vacio, hay que hacer un collider con suelos
+	if((posicion.y-radio<0))posicion.y=radio; // Para que de momento no caiga por la gravedad al vacio, hay que hacer un collider con suelos
 
 }
 void Personaje::Pesaje(void)

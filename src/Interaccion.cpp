@@ -14,25 +14,36 @@ Interaccion::~Interaccion(void)
 
 void Interaccion::rebotecaja(Personaje &h, Caja c)
 {
-	float xmin=c.posicion.x;
-	float xmax=c.posicion.x + c.lado;
-	float zmin=c.posicion.z + c.lado;
-	float zmax=c.posicion.z;
-	float ymax=c.posicion.y + c.lado;
-	float x=h.posicion.x + 1.5f;
+	float xmin=c.posicion.x-c.lado/2-h.radio;
+	float xmax=c.posicion.x+c.lado/2+h.radio;
+	float zmin=c.posicion.z-c.lado/2-h.radio;
+	float zmax=c.posicion.z+c.lado/2+h.radio;
+	float ymax=c.posicion.y+c.lado/2+h.radio;
+	float x=h.posicion.x;
 	float y=h.posicion.y;
 	float z=h.posicion.z;
-	if(x>xmin && x<xmax)
-			h.posicion.x=xmin-1.5f;
-	if(x>xmin && x>xmax)
-		if(x>xmin && x<xmax)
-			h.posicion.x=xmax+h.radio;
-	if(z<zmin && z<zmax)
-		if(z>zmin && z<zmax)
-			h.posicion.z=zmin-h.radio;
-	if(z>zmin && z>zmax)
-		if(z>zmin && z<zmax)
-			h.posicion.z=zmax+h.radio;
+	if((z>zmin && z<zmax) || (z>zmin && z<zmax))
+		if((x>xmin && x<xmax) || (x>xmin && x<xmax))
+		{
+			if(ymax>=h.posicion.y)
+			{
+				if((c.posicion.x)>(x+h.radio))h.posicion.x=xmin;
+				if((c.posicion.x)<(x-h.radio))h.posicion.x=xmax;
+			}
+			else
+				h.posicion.y=ymax;
+		}
+	if((x>xmin && x<xmax)|| (x>xmin && x<xmax))
+		if((z>zmin && z<zmax) || (z>zmin && z<zmax))
+		{
+			if(ymax>=h.posicion.y)
+			{
+				if((c.posicion.z)>(z+h.radio))h.posicion.z=zmin;
+				if((c.posicion.z)<(z-h.radio))h.posicion.z=zmax;
+			}
+			else
+				h.posicion.y=ymax;
+		}
 }
 void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
 {
