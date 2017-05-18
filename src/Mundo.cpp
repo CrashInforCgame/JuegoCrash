@@ -43,11 +43,13 @@ void Mundo::Dibuja()
 	caja1.Dibuja();
 	caja2.Dibuja();
 	caja3.Dibuja();
+	manzana1.dibuja();
 }
 
 void Mundo::Mueve()
 {
 	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
+	manzana1.mueve(0.025f);
 	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebotecaja(personaje,caja1);
 	Interaccion::rebotecaja(personaje,caja2);
@@ -64,6 +66,7 @@ void Mundo::Inicializa()
 	caja1.SetPos(4.5,0.5,-5);
 	caja2.SetPos(4.5,1.5,-5);
 	caja3.SetPos(0.5,0.5,-2);
+	manzana1.SetPos(3,0.5,-2);
 
 }
 
@@ -104,6 +107,8 @@ void Mundo::Tecla(unsigned char key)
 		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
 		personaje.SetVel(6.0f);//para ello he tenido que poner en public el Vector3D posicion
 		break;						//en personaje.h-->Buscar otra alternativa
+
+		// Podriamos hacer una funcion que compruebe que hay colision con cajas o suelo y si la hay que deje saltar
 	}
 }
 

@@ -2,6 +2,7 @@
 #include"Escenario.h"
 #include"Personaje.h"
 #include "Caja.h"
+#include "Manzana.h"
 
 class Mundo
 {
@@ -14,6 +15,7 @@ class Mundo
 	Caja caja1;
 	Caja caja2;
 	Caja caja3;
+	Manzana manzana1;
 public: 
 	void Tecla(unsigned char key);
 	void TeclaEspecial(unsigned char key);
