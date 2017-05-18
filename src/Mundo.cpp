@@ -49,6 +49,9 @@ void Mundo::Mueve()
 {
 	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
 	Interaccion::rebote(personaje,escenario);
+	/*Interaccion::rebotecaja(personaje,caja1);
+	Interaccion::rebotecaja(personaje,caja2);
+	Interaccion::rebotecaja(personaje,caja3);*/
 	SeguirPersonaje(); // Desactivar para no seguirlo
 }
 
@@ -60,7 +63,7 @@ void Mundo::Inicializa()
 	
 	caja1.SetPos(4.5,0.5,-5);
 	caja2.SetPos(4.5,1.5,-5);
-	caja3.SetPos(2.5,0.5,-2);
+	caja3.SetPos(0.5,0.5,-2);
 
 }
 

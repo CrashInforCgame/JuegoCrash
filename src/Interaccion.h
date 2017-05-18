@@ -9,6 +9,10 @@ private:
 public:
 	Interaccion();
 	virtual ~Interaccion();
-	static void rebote(Personaje &h, Escenario c);
+	void Mueve(float t);
+	static void rebotecaja(Personaje &h, Caja c);
 	static void rebote(Personaje &h, Suelo s);
+	static bool localizacion(Personaje &h, Suelo s);
+	static bool localizacion2(Personaje &h, Escenario &c);
+	static void rebote(Personaje &h, Escenario &e);
 };

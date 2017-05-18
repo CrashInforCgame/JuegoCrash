@@ -1,8 +1,11 @@
 #include "Escenario.h"
+#include "Suelo.h"
 #include "glut.h"
 
 Escenario::Escenario()
 {
+	plano=1;
+
 	suelo1.setColor(140,50,0);
 	suelo1.SetPos(-5.0F,0,-30.0F,-5.0F,0,5.0F,5.0F,0,5.0F,5.0F,0,-30.0F);
 

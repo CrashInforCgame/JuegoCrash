@@ -9,9 +9,9 @@ private:
 	Suelo suelo3;
 	Suelo suelo4;
 	Suelo suelo5;
+	int plano;
 public:
 	Escenario();
 	void Dibuja(void);
-
 friend class Interaccion;
 };

@@ -13,6 +13,6 @@ public:
 	void Dibuja(void);
 	void SetPos(float x, float y, float z);
 
-
+	friend class Interaccion;
 
 };
