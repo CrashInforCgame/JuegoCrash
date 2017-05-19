@@ -11,7 +11,7 @@ Manzana::Manzana(void)
 Manzana::~Manzana(void)
 {
 }
-void Manzana::dibuja() 
+void Manzana::Dibuja() 
 {
 	glColor3ub(255,0,0);
 	glTranslatef(posicion.x,posicion.y,posicion.z);
@@ -25,7 +25,7 @@ void Manzana::SetPos(float x, float y, float z)
 	posicion.y=y;
 	posicion.z=z;
 }
-void Manzana::mueve(float t)
+void Manzana::Mueve(float t)
 {
 	//ESTADOS DECRECE 1 CRECE 2
 	if(radio>0.3) estado=1;

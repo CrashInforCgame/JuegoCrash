@@ -43,13 +43,15 @@ void Mundo::Dibuja()
 	caja1.Dibuja();
 	caja2.Dibuja();
 	caja3.Dibuja();
-	manzana1.dibuja();
+	manzana1.Dibuja();
+	monstruo1.Dibuja();
 }
 
 void Mundo::Mueve()
 {
 	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
-	manzana1.mueve(0.025f);
+	manzana1.Mueve(0.025f);
+	monstruo1.Mueve(0.025f);
 	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebotecaja(personaje,caja1);
 	Interaccion::rebotecaja(personaje,caja2);
@@ -67,6 +69,7 @@ void Mundo::Inicializa()
 	caja2.SetPos(4.5,1.5,-5);
 	caja3.SetPos(0.5,0.5,-2);
 	manzana1.SetPos(3,0.5,-2);
+	monstruo1.SetPos(8,1,-25);
 
 }
 

@@ -7,8 +7,8 @@ public:
 	Manzana(void);
 	~Manzana(void);
 	friend class Interaccion;
-	void mueve(float t);
-	void dibuja();
+	void Mueve(float t);
+	void Dibuja();
 	void SetPos(float x,float y,float z);
 	Vector3D getPos(){return posicion;}
 private:
