@@ -12,7 +12,7 @@ Interaccion::~Interaccion(void)
 
 }
 
-void Interaccion::rebotecaja(Personaje &h, Caja c)
+bool Interaccion::rebotecaja(Personaje &h, Caja c)
 {
 	float xmin=c.posicion.x-c.lado/2-h.radio;
 	float xmax=c.posicion.x+c.lado/2+h.radio;
@@ -36,8 +36,10 @@ void Interaccion::rebotecaja(Personaje &h, Caja c)
 				if((c.posicion.z)<(z-h.radio))h.posicion.z=zmax;
 				if((c.posicion.y)<(y-h.radio))h.posicion.y=ymax; // Para que caiga encima de la caja si esta entre los limites y su y encima de ella
 				// Como antes se activan todos los limitadores de posicion nunca va a meterse el personaje dentro de una caja por error
+				return true;
 			}
 		}
+	return false;
 	
 }
 void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
