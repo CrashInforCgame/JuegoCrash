@@ -18,6 +18,7 @@ class Mundo
 	Manzana manzana1;
 public: 
 	void Tecla(unsigned char key);
+	void VariasTeclas(bool keystatus[]);  // ESTA ES LA FUNCION QUE USAREMOSS
 	void TeclaEspecial(unsigned char key);
 	void Inicializa();
 	void RotarOjo();

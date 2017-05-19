@@ -32,10 +32,13 @@ void Personaje::SetVel(float vy)
 	velocidad.y=vy;
 
 }
-void Personaje::SetDesplazamiento(float px, float pz)
+void Personaje::SetDesplazamientoZ(float pz)
+{
+	posicion.z = posicion.z + pz;
+}
+void Personaje::SetDesplazamientoX(float px)
 {
 	posicion.x = posicion.x + px;
-	posicion.z = posicion.z + pz;
 }
 
 void Personaje::Dibuja()

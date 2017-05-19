@@ -1,7 +1,7 @@
 #include "Mundo.h"
 #include "glut.h"
 
-
+bool keystatus[256] = {false};
 Mundo mundo;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
@@ -10,6 +10,7 @@ Mundo mundo;
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
+void OnKeyboardUp(unsigned char key, int x, int y);
 
 // void onSpecialKeyboardDown(int key, int x, int y); // Para teclas especiales como el cursor
 // Nos esta dando error LNK2019
@@ -35,6 +36,7 @@ int main(int argc,char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
+	glutKeyboardUpFunc(OnKeyboardUp);
 	// glutSpecialFunc(onSpecialKeyboardDown); 
 	// El callback de teclas especiales No nos funciona
 
@@ -68,8 +70,13 @@ void OnDraw(void)
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
-	mundo.Tecla(key);
-
+	//mundo.Tecla(key);   AHORA USAMOS LA FUNCION TECLAS
+	keystatus[key]=true;   //AL PRESIONAR LA TECLA PONEMOS EL ESTADO EN TRUE
+	glutPostRedisplay();
+}
+void OnKeyboardUp(unsigned char key, int x_t, int y_t)
+{
+	keystatus[key]=false;    //AL LEVANTAR LA TECLA PONEMOS EL ESTADO EN FALSE
 	glutPostRedisplay();
 }
 
@@ -84,7 +91,7 @@ void OnTimer(int value)
 {
 //poner aqui el código de animacion
 	mundo.Mueve();
-
+	mundo.VariasTeclas(keystatus);    // ESTA FUNCION AQUI CONSIGUE QUE PUEDA PULSAR VARIAS TECLAS
 	//no borrar estas lineas
 	glutTimerFunc(1,OnTimer,0);
 	glutPostRedisplay();

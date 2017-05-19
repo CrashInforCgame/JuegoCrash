@@ -71,35 +71,25 @@ void Mundo::Inicializa()
 }
 
 
-void Mundo::Tecla(unsigned char key)
+void Mundo::Tecla(unsigned char key)  // NO HACE FALTA USARLA YA
 {
-	/*if(key=='a')
-		personaje.SetDesplazamiento(-0.03f,0);
-	if(key=='d')
-		personaje.SetDesplazamiento(0.03f,0);
-	if(key=='w')
-		personaje.SetDesplazamiento(0,-0.03f);
-	if(key=='s')
-		personaje.SetDesplazamiento(0,-0.03f);*/
-	if(key==('b'))
-		personaje.SetDesplazamiento(3,-3.0f);
 	switch(key)
 	{
 	case 'a':
 	case 'A':
-		personaje.SetDesplazamiento(-0.25f,0);
+		personaje.SetDesplazamientoX(-0.25f);
 		break;
 	case 'd':
 	case'D':
-		personaje.SetDesplazamiento(0.25f,0);
+		personaje.SetDesplazamientoX(0.25f);
 		break;
 	case 'w':
 	case 'W':
-		personaje.SetDesplazamiento(0,-0.25f);
+		personaje.SetDesplazamientoZ(-0.25f);
 		break;
 	case 's':
 	case 'S':
-		personaje.SetDesplazamiento(0,0.25f);
+		personaje.SetDesplazamientoZ(0.25f);
 		break;
 	case 'n':
 	case 'N':// Para el salto
@@ -118,16 +108,29 @@ void Mundo::TeclaEspecial(unsigned char key)
 	switch(key)
 	{
 	case GLUT_KEY_LEFT:
-		personaje.SetDesplazamiento(-1.0f,0);
+		personaje.SetDesplazamientoX(-1.0f);
 		break;
 	case GLUT_KEY_RIGHT:
-		personaje.SetDesplazamiento(1.0f,0);
+		personaje.SetDesplazamientoX(1.0f);
 		break;
 	case GLUT_KEY_UP:
-		personaje.SetDesplazamiento(0,-1.0f);
+		personaje.SetDesplazamientoZ(-1.0f);
 		break;
 	case GLUT_KEY_DOWN:
-		personaje.SetDesplazamiento(0,1.0f);
+		personaje.SetDesplazamientoZ(1.0f);
 		break;
 	}
+}
+void Mundo::VariasTeclas(bool keystatus[])  // LA FUNCION IMPORTANTE PARA EL MOVIMIENTO
+{
+	if(keystatus['a'] || keystatus['A'])personaje.SetDesplazamientoX(-0.075f);
+	if(keystatus['d'] || keystatus['D'])personaje.SetDesplazamientoX(0.075f);
+	if(keystatus['w'] || keystatus['W'])personaje.SetDesplazamientoZ(-0.075f);
+	if(keystatus['s'] || keystatus['S'])personaje.SetDesplazamientoZ(0.075f);
+	if(keystatus[' '] || keystatus['n'] || keystatus['N'])
+	{
+		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
+		personaje.SetVel(6.0f);		
+	}
+
 }
