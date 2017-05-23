@@ -32,10 +32,13 @@ void Personaje::SetVel(float vy)
 	velocidad.y=vy;
 
 }
-void Personaje::SetDesplazamiento(float px, float pz)
+void Personaje::SetDesplazamientoZ(float pz)
+{
+	posicion.z = posicion.z + pz;
+}
+void Personaje::SetDesplazamientoX(float px)
 {
 	posicion.x = posicion.x + px;
-	posicion.z = posicion.z + pz;
 }
 
 void Personaje::Dibuja()
@@ -54,7 +57,7 @@ void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra q
 	if(posicion.y>radio)
 	{
 		velocidad.y = velocidad.y+aceleracion.y*t;
-		aceleracion.y=-2;
+		aceleracion.y=-5;
 	} 
 	/*posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
 	velocidad = velocidad+aceleracion*t;*/

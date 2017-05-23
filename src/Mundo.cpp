@@ -43,11 +43,15 @@ void Mundo::Dibuja()
 	caja1.Dibuja();
 	caja2.Dibuja();
 	caja3.Dibuja();
+	manzana1.Dibuja();
+	monstruo1.Dibuja();
 }
 
 void Mundo::Mueve()
 {
 	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
+	manzana1.Mueve(0.025f);
+	monstruo1.Mueve(0.025f);
 	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebotecaja(personaje,caja1);
 	Interaccion::rebotecaja(personaje,caja2);
@@ -64,39 +68,31 @@ void Mundo::Inicializa()
 	caja1.SetPos(4.5,0.5,-5);
 	caja2.SetPos(4.5,1.5,-5);
 	caja3.SetPos(0.5,0.5,-2);
+	manzana1.SetPos(3,0.5,-2);
+	monstruo1.SetPos(8,1,-25);
 
 }
 
 
-void Mundo::Tecla(unsigned char key)
+void Mundo::Tecla(unsigned char key)  // NO HACE FALTA USARLA YA
 {
-	/*if(key=='a')
-		personaje.SetDesplazamiento(-0.03f,0);
-	if(key=='d')
-		personaje.SetDesplazamiento(0.03f,0);
-	if(key=='w')
-		personaje.SetDesplazamiento(0,-0.03f);
-	if(key=='s')
-		personaje.SetDesplazamiento(0,-0.03f);*/
-	if(key==('b'))
-		personaje.SetDesplazamiento(3,-3.0f);
 	switch(key)
 	{
 	case 'a':
 	case 'A':
-		personaje.SetDesplazamiento(-0.25f,0);
+		personaje.SetDesplazamientoX(-0.25f);
 		break;
 	case 'd':
 	case'D':
-		personaje.SetDesplazamiento(0.25f,0);
+		personaje.SetDesplazamientoX(0.25f);
 		break;
 	case 'w':
 	case 'W':
-		personaje.SetDesplazamiento(0,-0.25f);
+		personaje.SetDesplazamientoZ(-0.25f);
 		break;
 	case 's':
 	case 'S':
-		personaje.SetDesplazamiento(0,0.25f);
+		personaje.SetDesplazamientoZ(0.25f);
 		break;
 	case 'n':
 	case 'N':// Para el salto
@@ -104,6 +100,8 @@ void Mundo::Tecla(unsigned char key)
 		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
 		personaje.SetVel(6.0f);//para ello he tenido que poner en public el Vector3D posicion
 		break;						//en personaje.h-->Buscar otra alternativa
+
+		// Podriamos hacer una funcion que compruebe que hay colision con cajas o suelo y si la hay que deje saltar
 	}
 }
 
@@ -113,16 +111,29 @@ void Mundo::TeclaEspecial(unsigned char key)
 	switch(key)
 	{
 	case GLUT_KEY_LEFT:
-		personaje.SetDesplazamiento(-1.0f,0);
+		personaje.SetDesplazamientoX(-1.0f);
 		break;
 	case GLUT_KEY_RIGHT:
-		personaje.SetDesplazamiento(1.0f,0);
+		personaje.SetDesplazamientoX(1.0f);
 		break;
 	case GLUT_KEY_UP:
-		personaje.SetDesplazamiento(0,-1.0f);
+		personaje.SetDesplazamientoZ(-1.0f);
 		break;
 	case GLUT_KEY_DOWN:
-		personaje.SetDesplazamiento(0,1.0f);
+		personaje.SetDesplazamientoZ(1.0f);
 		break;
 	}
+}
+void Mundo::VariasTeclas(bool keystatus[])  // LA FUNCION IMPORTANTE PARA EL MOVIMIENTO
+{
+	if(keystatus['a'] || keystatus['A'])personaje.SetDesplazamientoX(-0.075f);
+	if(keystatus['d'] || keystatus['D'])personaje.SetDesplazamientoX(0.075f);
+	if(keystatus['w'] || keystatus['W'])personaje.SetDesplazamientoZ(-0.075f);
+	if(keystatus['s'] || keystatus['S'])personaje.SetDesplazamientoZ(0.075f);
+	if(keystatus[' '] || keystatus['n'] || keystatus['N'])
+	{
+		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
+		personaje.SetVel(6.0f);		
+	}
+
 }

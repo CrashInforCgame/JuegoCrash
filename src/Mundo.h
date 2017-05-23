@@ -2,6 +2,8 @@
 #include"Escenario.h"
 #include"Personaje.h"
 #include "Caja.h"
+#include "Manzana.h"
+#include "Monstruo.h"
 
 class Mundo
 {
@@ -14,8 +16,11 @@ class Mundo
 	Caja caja1;
 	Caja caja2;
 	Caja caja3;
+	Monstruo monstruo1;
+	Manzana manzana1;
 public: 
 	void Tecla(unsigned char key);
+	void VariasTeclas(bool keystatus[]);  // ESTA ES LA FUNCION QUE USAREMOSS
 	void TeclaEspecial(unsigned char key);
 	void Inicializa();
 	void RotarOjo();
