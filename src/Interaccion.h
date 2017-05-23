@@ -10,7 +10,7 @@ public:
 	Interaccion();
 	virtual ~Interaccion();
 	void Mueve(float t);
-	static void rebotecaja(Personaje &h, Caja c);
+	static bool rebotecaja(Personaje &h, Caja c);
 	static void rebote(Personaje &h, Suelo s);
 	static bool localizacion(Personaje &h, Suelo s);
 	static bool localizacion2(Personaje &h, Escenario &c);

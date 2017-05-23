@@ -13,7 +13,7 @@ Manzana::~Manzana(void)
 }
 void Manzana::Dibuja() 
 {
-	glColor3ub(255,0,0);
+	glColor3ub(255,45,0);
 	glTranslatef(posicion.x,posicion.y,posicion.z);
 	glutSolidSphere(radio,20,20);
 	glTranslatef(-posicion.x,-posicion.y,-posicion.z);

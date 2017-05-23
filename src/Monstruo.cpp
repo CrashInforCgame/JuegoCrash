@@ -14,7 +14,7 @@ Monstruo::~Monstruo(void)
 }
 void Monstruo::Dibuja()
 {
-	glColor3ub(0,255,0);
+	glColor3ub(0,255,3);
 	glTranslatef(posicion.x,posicion.y,posicion.z);
 	glutSolidSphere(radio,20,20);
 	glTranslatef(-posicion.x,-posicion.y,-posicion.z);

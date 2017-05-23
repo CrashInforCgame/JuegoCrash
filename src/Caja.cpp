@@ -11,6 +11,7 @@ Caja::~Caja()
 }
 void Caja::Dibuja()
 {
+	glColor3ub(0,0,200);
 	glTranslatef(posicion.x,posicion.y,posicion.z);
 	glutSolidCube(lado);
 	glTranslatef(-posicion.x,-posicion.y,-posicion.z);
