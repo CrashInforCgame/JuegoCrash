@@ -9,15 +9,15 @@ void Suelo::setColor( unsigned char r,unsigned char v, unsigned char a)
 	azul=a;
 }
 
-void Suelo::Dibuja()
+void Suelo::Dibuja(Personaje h)
 {
 	glDisable(GL_LIGHTING);
 	glColor3ub(rojo,verde,azul);
 	glBegin(GL_POLYGON);
-	glVertex3d(limite1.x,limite1.y,limite1.z);
-	glVertex3d(limite2.x,limite2.y,limite2.z);
-	glVertex3d(limite3.x,limite3.y,limite3.z);
-	glVertex3d(limite4.x,limite4.y,limite4.z);
+	glVertex3d((limite1.x-h.radio),limite1.y,(limite1.z+h.radio));
+	glVertex3d((limite2.x-h.radio),limite2.y,(limite2.z-h.radio));
+	glVertex3d((limite3.x+h.radio),limite3.y,(limite3.z-h.radio));
+	glVertex3d((limite4.x+h.radio),limite4.y,(limite4.z+h.radio));
 	glEnd();
 	glEnable(GL_LIGHTING);
 }

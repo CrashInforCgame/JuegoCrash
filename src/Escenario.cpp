@@ -22,13 +22,13 @@ Escenario::Escenario()
 	suelo5.SetPos(5.0F,0,-70.0F,5.0F,0,-50.0F,15.0F,0,-50.0F,15.0F,0,-70.0F);
 }
 
-void Escenario::Dibuja()
+void Escenario::Dibuja(Personaje h)
 {
-	suelo1.Dibuja();
-	suelo2.Dibuja();
-	suelo3.Dibuja();
-	suelo4.Dibuja();
-	suelo5.Dibuja();
+	suelo1.Dibuja(h);
+	suelo2.Dibuja(h);
+	suelo3.Dibuja(h);
+	suelo4.Dibuja(h);
+	suelo5.Dibuja(h);
 }
 
 /*
