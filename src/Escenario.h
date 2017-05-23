@@ -12,6 +12,6 @@ private:
 	int plano;
 public:
 	Escenario();
-	void Dibuja(Personaje h);
+	void Dibuja(void);
 friend class Interaccion;
 };

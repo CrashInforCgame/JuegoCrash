@@ -38,7 +38,7 @@ void Mundo::Dibuja()
 
 	//aqui es donde hay que poner el codigo de dibujo
 	//dibujo del suelo
-	escenario.Dibuja(personaje);
+	escenario.Dibuja();
 	personaje.Dibuja();
 	caja1.Dibuja();
 	caja2.Dibuja();
