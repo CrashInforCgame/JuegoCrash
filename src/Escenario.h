@@ -1,6 +1,6 @@
 #pragma once
 #include "Suelo.h" 
-
+#include "Personaje.h" 
 class Escenario
 {
 private:
@@ -12,6 +12,6 @@ private:
 	int plano;
 public:
 	Escenario();
-	void Dibuja(void);
+	void Dibuja(Personaje h);
 friend class Interaccion;
 };

@@ -12,8 +12,8 @@ Personaje::Personaje(void)
 	velocidad.y=0;
 	velocidad.z=0;
 	rojo=0;
-	verde=0;
-	azul=255;
+	verde=255;
+	azul=0;
 	posicion.x=0;
 	posicion.y=4+radio;
 	posicion.z=0;

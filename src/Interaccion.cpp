@@ -25,13 +25,13 @@ void Interaccion::rebotecaja(Personaje &h, Caja c)
 	if((z>zmin && z<zmax) || (z>zmin && z<zmax))
 		if((x>xmin && x<xmax) || (x>xmin && x<xmax))
 		{
-			if(ymax>=h.posicion.y)
+			if((ymax-2)>h.posicion.y)
 			{
 				if((c.posicion.x)>(x+h.radio))h.posicion.x=xmin;
 				if((c.posicion.x)<(x-h.radio))h.posicion.x=xmax;
 			}
 			else
-				h.posicion.y=ymax;
+				h.posicion.y=5;
 		}
 	if((x>xmin && x<xmax)|| (x>xmin && x<xmax))
 		if((z>zmin && z<zmax) || (z>zmin && z<zmax))
