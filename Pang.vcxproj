@@ -89,7 +89,7 @@
     <ClCompile Include="src\ListaManzanas.cpp" />
     <ClCompile Include="src\Manzana.cpp" />
     <ClCompile Include="src\Menu.cpp" />
-    <ClCompile Include="src\Monstruo.cpp" />
+    <ClCompile Include="src\MonstruoHoriz.cpp" />
     <ClCompile Include="src\Movimientos.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Crash.cpp" />
@@ -104,7 +104,7 @@
     <ClInclude Include="src\ListaManzanas.h" />
     <ClInclude Include="src\Manzana.h" />
     <ClInclude Include="src\Menu.h" />
-    <ClInclude Include="src\Monstruo.h" />
+    <ClInclude Include="src\MonstruoHoriz.h" />
     <ClInclude Include="src\Movimientos.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Personaje.h" />

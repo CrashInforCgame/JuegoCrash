@@ -1,7 +1,7 @@
-#include "Monstruo.h"
+#include "MonstruoHoriz.h"
 
 
-Monstruo::Monstruo(void)
+MonstruoHoriz::MonstruoHoriz(void)
 {
 	radio=1.5f;
 	estado=1;
@@ -9,17 +9,17 @@ Monstruo::Monstruo(void)
 }
 
 
-Monstruo::~Monstruo(void)
+MonstruoHoriz::~MonstruoHoriz(void)
 {
 }
-void Monstruo::Dibuja()
+void MonstruoHoriz::Dibuja()
 {
 	glColor3ub(0,255,3);
 	glTranslatef(posicion.x,posicion.y,posicion.z);
 	glutSolidSphere(radio,20,20);
 	glTranslatef(-posicion.x,-posicion.y,-posicion.z);
 }
-void Monstruo::SetPos(float ix, float iy, float iz)
+void MonstruoHoriz::SetPos(float ix, float iy, float iz)
 {
 	posicion.x=ix;
 	posicion.y=iy;
@@ -27,7 +27,7 @@ void Monstruo::SetPos(float ix, float iy, float iz)
 	limitestrayectoria[0]=posicion.x-3,
 	limitestrayectoria[1]=posicion.x+3;
 }
-void Monstruo::Mueve(float t)//Esta parte irá en la clase movimientos y habra que poner esto de forma más
+void MonstruoHoriz::Mueve(float t)//Esta parte irá en la clase movimientos y habra que poner esto de forma más
 							// simplificada como en lo comentado abajo
 {
 	if(posicion.x>limitestrayectoria[1]) estado=1;

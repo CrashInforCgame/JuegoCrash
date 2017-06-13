@@ -3,12 +3,12 @@
 #include "Personaje.h"
 #include "glut.h"
 
-class Monstruo
+class MonstruoHoriz
 {
 public:
 	friend class Interaccion;
-	Monstruo(void);
-	virtual ~Monstruo(void);
+	MonstruoHoriz(void);
+	virtual ~MonstruoHoriz(void);
 	Vector3D GetPos();
 	void Dibuja(void);
 	void Mueve(float);
