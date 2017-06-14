@@ -3,7 +3,8 @@
 #include"Personaje.h"
 #include "Caja.h"
 #include "Manzana.h"
-#include "MonstruoHoriz.h"
+#include "MonstruoX.h"
+#include "MonstruoZ.h"
 
 class Mundo
 {
@@ -16,7 +17,8 @@ class Mundo
 	Caja caja1;
 	Caja caja2;
 	Caja caja3;
-	MonstruoHoriz monstruo1;
+	MonstruoX monstruo1;
+	MonstruoZ monstruo2;;
 	Manzana manzana1;
 public: 
 	void Tecla(unsigned char key);

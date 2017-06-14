@@ -1,24 +1,22 @@
 #pragma once
 #include "Vector3D.h"
-#include "Personaje.h"
 #include "glut.h"
-
-class MonstruoHoriz
+class Monstruo
 {
 public:
 	friend class Interaccion;
-	MonstruoHoriz(void);
-	virtual ~MonstruoHoriz(void);
-	Vector3D GetPos();
+	Monstruo(void);
+	virtual ~Monstruo(void);
+	Vector3D GetPos(){return posicion;};
 	void Dibuja(void);
-	void Mueve(float);
-	void SetPos(float x, float y, float z);
-private:
+	virtual void Mueve(float)=0;
+	virtual void SetPos(float x, float y, float z)=0;
+protected:
 	float radio;
 	Vector3D posicion;
+	unsigned char color[3];
 	float limitestrayectoria[2];
 	Vector3D velocidad;
 	Vector3D aceleracion;
 	int estado;
-	};
-
+};
