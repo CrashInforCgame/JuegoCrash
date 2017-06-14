@@ -84,6 +84,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Caja.cpp" />
+    <ClCompile Include="src\CajaMadera.cpp" />
     <ClCompile Include="src\Escenario.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\ListaManzanas.cpp" />
@@ -102,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Caja.h" />
+    <ClInclude Include="src\CajaMadera.h" />
     <ClInclude Include="src\Escenario.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\ListaManzanas.h" />

@@ -46,6 +46,7 @@ void Mundo::Dibuja()
 	manzana1.Dibuja();
 	monstruo1.Dibuja();
 	monstruo2.Dibuja();
+	monstruo3.Dibuja();
 }
 
 void Mundo::Mueve()
@@ -54,6 +55,7 @@ void Mundo::Mueve()
 	manzana1.Mueve(0.025f);
 	monstruo1.Mueve(0.025f);
 	monstruo2.Mueve(0.025f);
+	monstruo3.Mueve(0.025f);
 	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebotecaja(personaje,caja1);
 	Interaccion::rebotecaja(personaje,caja2);
@@ -73,6 +75,7 @@ void Mundo::Inicializa()
 	manzana1.SetPos(3,0.5,-2);
 	monstruo1.SetPos(8,1,-25);
 	monstruo2.SetPos(15,1,-30);
+	monstruo3.SetPos(3,1,-7);
 
 
 }

@@ -5,7 +5,7 @@
 #include "Manzana.h"
 #include "MonstruoX.h"
 #include "MonstruoZ.h"
-
+#include "MonstruoSalto.h"
 class Mundo
 {
 	float x_ojo;
@@ -19,6 +19,7 @@ class Mundo
 	Caja caja3;
 	MonstruoX monstruo1;
 	MonstruoZ monstruo2;;
+	MonstruoSalto monstruo3;
 	Manzana manzana1;
 public: 
 	void Tecla(unsigned char key);
