@@ -3,7 +3,7 @@
 
 class Caja
 {
-private:
+protected:
 	float lado;
 	float masa;
 	Vector3D posicion;

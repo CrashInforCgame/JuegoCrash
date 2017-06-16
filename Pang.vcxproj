@@ -83,8 +83,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CajaExplosiva.cpp" />
+    <ClCompile Include="CajaNitro.cpp" />
+    <ClCompile Include="CajaNormal.cpp" />
+    <ClCompile Include="CajaRebotes.cpp" />
+    <ClCompile Include="CajaTNT.cpp" />
     <ClCompile Include="src\Caja.cpp" />
-    <ClCompile Include="src\CajaMadera.cpp" />
     <ClCompile Include="src\Escenario.cpp" />
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\ListaManzanas.cpp" />
@@ -102,8 +106,12 @@
     <ClCompile Include="src\Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CajaExplosiva.h" />
+    <ClInclude Include="CajaNitro.h" />
+    <ClInclude Include="CajaNormal.h" />
+    <ClInclude Include="CajaRebotes.h" />
+    <ClInclude Include="CajaTNT.h" />
     <ClInclude Include="src\Caja.h" />
-    <ClInclude Include="src\CajaMadera.h" />
     <ClInclude Include="src\Escenario.h" />
     <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\ListaManzanas.h" />
