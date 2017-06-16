@@ -60,6 +60,7 @@ void Mundo::Mueve()
 	Interaccion::rebotecaja(personaje,caja1);
 	Interaccion::rebotecaja(personaje,caja2);
 	Interaccion::rebotecaja(personaje,caja3);
+	Interaccion::choque(personaje,monstruo3);
 	SeguirPersonaje(); // Desactivar para no seguirlo
 }
 
@@ -131,16 +132,18 @@ void Mundo::TeclaEspecial(unsigned char key)
 		break;
 	}
 }
-void Mundo::VariasTeclas(bool keystatus[])  // LA FUNCION IMPORTANTE PARA EL MOVIMIENTO
+void Mundo::VariasTeclas(bool keystatus[], bool keyspecial[])  // LA FUNCION IMPORTANTE PARA EL MOVIMIENTO
 {
-	if(keystatus['a'] || keystatus['A'])personaje.SetDesplazamientoX(-0.075f);
-	if(keystatus['d'] || keystatus['D'])personaje.SetDesplazamientoX(0.075f);
-	if(keystatus['w'] || keystatus['W'])personaje.SetDesplazamientoZ(-0.075f);
-	if(keystatus['s'] || keystatus['S'])personaje.SetDesplazamientoZ(0.075f);
+	if(keystatus['a'] || keystatus['A'] || keyspecial[GLUT_KEY_LEFT])personaje.SetDesplazamientoX(-0.075f);
+	if(keystatus['d'] || keystatus['D'] || keyspecial[GLUT_KEY_RIGHT])personaje.SetDesplazamientoX(0.075f);
+	if(keystatus['w'] || keystatus['W'] || keyspecial[GLUT_KEY_UP])personaje.SetDesplazamientoZ(-0.075f);
+	if(keystatus['s'] || keystatus['S']|| keyspecial[GLUT_KEY_DOWN])personaje.SetDesplazamientoZ(0.075f);
 	if(keystatus[' '] || keystatus['n'] || keystatus['N'])
 	{
 		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
 		personaje.SetVel(6.0f);		
 	}
+
+	if(keystatus['p']||keystatus['P']) Interaccion::ataque(personaje, monstruo3);
 
 }

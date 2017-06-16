@@ -101,3 +101,21 @@ void Interaccion::rebote(Personaje &h, Escenario &e)
 		}
 	}
 }
+
+bool Interaccion::choque(Personaje &h, Monstruo &m)
+{
+	float distancia=(h.posicion-m.posicion).modulo(); 
+
+	if(distancia < h.getRadio()+m.getRadio()) m.posicion.x+=7;
+	return false;
+
+
+}
+bool Interaccion::ataque(Personaje &h, Monstruo &m) // es como el 
+	//choque pero esta se activara a una distancia inferior
+	// y dentro del keypressed
+{
+	float distancia=(h.posicion-m.posicion).modulo(); 
+	if(distancia < h.getRadio()+m.getRadio()+0.05) m.posicion.x-=7;
+	return false;
+}

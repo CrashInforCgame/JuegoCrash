@@ -14,6 +14,7 @@ public:
 	float radio;
 	Personaje();
 	Vector3D GetPos();
+	float getRadio(){return radio;}
 	void Dibuja(void);
 	void Mueve(float);
 	void SetPos(float x, float y, float z);

@@ -2,6 +2,8 @@
 #include "Personaje.h"
 #include "Escenario.h"
 #include "Caja.h"
+#include "Monstruo.h"
+#include "Vector3D.h"
 
 class Interaccion
 {
@@ -15,4 +17,6 @@ public:
 	static bool localizacion(Personaje &h, Suelo s);
 	static bool localizacion2(Personaje &h, Escenario &c);
 	static void rebote(Personaje &h, Escenario &e);
+	static bool choque(Personaje &h, Monstruo &m);
+	static bool ataque(Personaje &h, Monstruo &m);
 };

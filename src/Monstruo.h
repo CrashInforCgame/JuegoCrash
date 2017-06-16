@@ -8,6 +8,7 @@ public:
 	Monstruo(void);
 	virtual ~Monstruo(void);
 	Vector3D GetPos(){return posicion;};
+	float getRadio(){return radio;}
 	void Dibuja(void);
 	virtual void Mueve(float)=0;
 	virtual void SetPos(float x, float y, float z)=0;

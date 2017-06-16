@@ -1,7 +1,8 @@
 #include "Mundo.h"
 #include "glut.h"
 
-bool keystatus[256] = {false};
+bool keystatus[256] = {false}; //PARA USAR TECLAS NORMALES SI ESTAN PULSADAS
+bool keySpecialStates[246] = {false}; // PARA USAR TECLAS ESPECIALES PULSADAS
 Mundo mundo;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
@@ -11,6 +12,9 @@ void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
 void OnKeyboardUp(unsigned char key, int x, int y);
+
+void KeySpecialDown(int key, int x, int y);
+void KeySpecialUp(int key, int x, int y);
 
 // void onSpecialKeyboardDown(int key, int x, int y); // Para teclas especiales como el cursor
 // Nos esta dando error LNK2019
@@ -37,6 +41,9 @@ int main(int argc,char* argv[])
 	glutTimerFunc(25,OnTimer,0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
 	glutKeyboardUpFunc(OnKeyboardUp);
+	glutSpecialFunc(KeySpecialDown); 
+	glutSpecialUpFunc(KeySpecialUp); 
+
 	// glutSpecialFunc(onSpecialKeyboardDown); 
 	// El callback de teclas especiales No nos funciona
 
@@ -79,7 +86,17 @@ void OnKeyboardUp(unsigned char key, int x_t, int y_t)
 	keystatus[key]=false;    //AL LEVANTAR LA TECLA PONEMOS EL ESTADO EN FALSE
 	glutPostRedisplay();
 }
+void KeySpecialDown(int key, int x_t, int y_t)
+{
+	keySpecialStates[key]=true;    //AL BAJAR A TECLA SE PONE EN TRUE
+	glutPostRedisplay();
+}
 
+void KeySpecialUp(int key, int x_t, int y_t) 
+{
+	keySpecialStates[key]=false;    //AL LEVANTAR LA TECLA PONEMOS EL ESTADO EN FALSE
+	glutPostRedisplay();
+} 
 /*void OnSpecialKeyboardDown(int key, int x_t, int y_t) 
 {
 	mundo.TeclaEspecial(key);
@@ -91,7 +108,7 @@ void OnTimer(int value)
 {
 //poner aqui el código de animacion
 	mundo.Mueve();
-	mundo.VariasTeclas(keystatus);    // ESTA FUNCION AQUI CONSIGUE QUE PUEDA PULSAR VARIAS TECLAS
+	mundo.VariasTeclas(keystatus, keySpecialStates);    // ESTA FUNCION AQUI CONSIGUE QUE PUEDA PULSAR VARIAS TECLAS
 	//no borrar estas lineas
 	glutTimerFunc(1,OnTimer,0);
 	glutPostRedisplay();
