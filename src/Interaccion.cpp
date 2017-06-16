@@ -117,6 +117,10 @@ bool Interaccion::ataque(Personaje &h, Monstruo &m) // es como el
 {
 	h.atacando=1;
 	float distancia=(h.posicion-m.posicion).modulo(); 
-	if(distancia < h.getRadio()+m.getRadio()+0.05) m.posicion.x-=7;
+	if(distancia < h.getRadio()+m.getRadio()+0.1) 
+		{
+			m.posicion.x-=7;
+			return true;
+	}
 	return false;
 }

@@ -47,6 +47,7 @@ void Mundo::Dibuja()
 	monstruo1.Dibuja();
 	monstruo2.Dibuja();
 	monstruo3.Dibuja();
+	monstruos.Dibuja();
 }
 
 void Mundo::Mueve()
@@ -56,6 +57,16 @@ void Mundo::Mueve()
 	monstruo1.Mueve(0.025f);
 	monstruo2.Mueve(0.025f);
 	monstruo3.Mueve(0.025f);
+
+	monstruos.Mueve(0.025f);
+	monstruos.choque(personaje);
+	if(personaje.atacando == 1)
+	{
+			Interaccion::ataque(personaje, monstruo3);
+			Monstruo *aux = monstruos.ataque(personaje);
+			if(aux!=0) monstruos.eliminar(aux);
+	}
+
 	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebotecaja(personaje,caja1);
 	Interaccion::rebotecaja(personaje,caja2);
@@ -69,7 +80,17 @@ void Mundo::Inicializa()
 	x_ojo=0;
 	y_ojo=10;
 	z_ojo=20;
-	
+	//Inicializando monstruos para lista
+	Monstruo *m1=new MonstruoSalto;
+	m1->SetPos(3,3,-12);
+	monstruos.agregar(m1);
+	Monstruo *m2=new MonstruoX;
+	m2->SetPos(3,1,-18);
+	monstruos.agregar(m2);
+	Monstruo *m3=new MonstruoSalto;
+	m3->SetPos(0,3,-5);
+	monstruos.agregar(m3);
+
 	caja1.SetPos(4.5,0.5,-5);
 	caja2.SetPos(4.5,1.5,-5);
 	caja3.SetPos(0.5,0.5,-2);
@@ -144,7 +165,10 @@ void Mundo::VariasTeclas(bool keystatus[], bool keyspecial[])  // LA FUNCION IMP
 		personaje.SetVel(6.0f);		
 	}
 
-	if(keystatus['p']||keystatus['P']) Interaccion::ataque(personaje, monstruo3);
+	if(keystatus['p']||keystatus['P'])
+		{
+			personaje.atacando=1;
+		}
 	else
 		personaje.atacando=0;
 

@@ -36,9 +36,9 @@ void MonstruoSalto::Mueve(float t)
 	} 
 	if(estado ==2)
 	{
-		posicion.y=radio;
-		contador+=t;
-		if(contador>3) {estado=1; contador=0; velocidad.y=5;}
+		/*posicion.y=radio;
+		contador+=t;			
+		if(contador>3) */{estado=1; contador=0; velocidad.y=5;}
 	}
 }
 

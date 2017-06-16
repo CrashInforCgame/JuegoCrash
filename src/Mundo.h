@@ -6,11 +6,13 @@
 #include "MonstruoX.h"
 #include "MonstruoZ.h"
 #include "MonstruoSalto.h"
+#include "ListaMonstruos.h"
 class Mundo
 {
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
+	ListaMonstruos monstruos;
 	Escenario escenario;
 	Personaje personaje;
 	Personaje personaje2;
