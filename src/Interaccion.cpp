@@ -115,6 +115,7 @@ bool Interaccion::ataque(Personaje &h, Monstruo &m) // es como el
 	//choque pero esta se activara a una distancia inferior
 	// y dentro del keypressed
 {
+	h.atacando=1;
 	float distancia=(h.posicion-m.posicion).modulo(); 
 	if(distancia < h.getRadio()+m.getRadio()+0.05) m.posicion.x-=7;
 	return false;

@@ -1,7 +1,6 @@
 #pragma once
-#include "CajaExplosiva.h"
 
-class CajaTNT:public CajaExplosiva
+class CajaTNT
 {
 protected:
 	int temporizador;

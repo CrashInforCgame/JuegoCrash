@@ -43,7 +43,8 @@ void Personaje::SetDesplazamientoX(float px)
 
 void Personaje::Dibuja()
 {
-	glColor3ub(rojo,verde,azul);//azul oscura
+	if(atacando==0) glColor3ub(rojo,verde,azul);// Para el color si no ataca
+	if(atacando==1) glColor3ub(rojo,0,azul); // El color si ataca
 	glTranslatef(posicion.x,posicion.y,posicion.z);
 	glutSolidSphere(radio,20,20);
 	glTranslatef(-posicion.x,-posicion.y,-posicion.z);

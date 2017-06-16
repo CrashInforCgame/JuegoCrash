@@ -145,5 +145,7 @@ void Mundo::VariasTeclas(bool keystatus[], bool keyspecial[])  // LA FUNCION IMP
 	}
 
 	if(keystatus['p']||keystatus['P']) Interaccion::ataque(personaje, monstruo3);
+	else
+		personaje.atacando=0;
 
 }

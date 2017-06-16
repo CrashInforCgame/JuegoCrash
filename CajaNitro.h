@@ -1,7 +1,6 @@
 #pragma once
-#include "CajaExplosiva.h"
 
-class CajaNitro : public CajaExplosiva
+class CajaNitro 
 {
 public:
 	CajaNitro(void);

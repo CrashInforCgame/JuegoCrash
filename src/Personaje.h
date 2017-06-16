@@ -9,8 +9,9 @@ private:
 	unsigned char azul;
 	//float radio;
 	float masa;
-
+	
 public:
+	bool atacando; 
 	float radio;
 	Personaje();
 	Vector3D GetPos();
