@@ -63,7 +63,7 @@ void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
 		//if(ypersonaje>h.posicion.y)h.posicion.z=s.limite1.z;
 }
 
-void Interaccion::apoyo(Personaje &h, Escenario &e)
+void Interaccion::apoyo(Personaje &h, Escenario &e)// se puede optimizar con un contenedor
 {
 	switch(e.plano)
 	{
@@ -85,6 +85,33 @@ void Interaccion::apoyo(Personaje &h, Escenario &e)
 	case 6:
 		h.apoyo=e.suelo6.limite2.y;
 		break;
+	case 7:
+		h.apoyo=e.suelo7.limite2.y;
+		break;
+	case 8:
+		h.apoyo=e.suelo8.limite2.y;
+		break;
+	case 9:
+		h.apoyo=e.suelo9.limite2.y;
+		break;
+	case 11:
+		h.apoyo=e.suelo11.limite2.y;
+		break;
+	case 12:
+		h.apoyo=e.suelo12.limite2.y;
+		break;
+	case 13:
+		h.apoyo=e.suelo13.limite2.y;
+		break;
+	case 14:
+		h.apoyo=e.suelo14.limite2.y;
+		break;
+	case 15:
+		h.apoyo=e.suelo15.limite2.y;
+		break;
+	case 16:
+		h.apoyo=e.suelo16.limite2.y;
+		break;
 	}
 }
 
@@ -96,11 +123,11 @@ bool Interaccion::localizacion(Personaje &h, Suelo s)
 		return 1;
 	return 0;
 }
-bool Interaccion::localizacion2(Personaje &h, Suelo s)
+bool Interaccion::localizacion2(Personaje &h, Suelo s) //Para planos con altura
 {
 	if((s.limite1.x)<=h.posicion.x && (s.limite4.x)>=h.posicion.x 
 		&& (s.limite1.z)<=h.posicion.z && (s.limite2.z)>=h.posicion.z
-		&& (s.limite1.y+h.radio)<=h.posicion.y)
+		&& (s.limite1.y+h.radio)<h.posicion.y)//No poner menor o igual, solo menor
 		return 1;
 	return 0;
 }
@@ -114,6 +141,16 @@ bool Interaccion::localizacion2(Personaje &h,Escenario &e)
 	if(Interaccion::localizacion(h,e.suelo4)){e.plano=4;return 0;}
 	if(Interaccion::localizacion(h,e.suelo5)){e.plano=5;return 0;}
 	if(Interaccion::localizacion2(h,e.suelo6)){e.plano=6;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo7)){e.plano=7;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo8)){e.plano=8;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo9)){e.plano=9;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo10)){e.plano=10;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo11)){e.plano=11;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo12)){e.plano=12;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo13)){e.plano=13;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo14)){e.plano=14;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo15)){e.plano=15;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo16)){e.plano=16;return 0;}
 	return 1;
 }
 void Interaccion::rebote(Personaje &h, Escenario &e)
@@ -139,6 +176,36 @@ void Interaccion::rebote(Personaje &h, Escenario &e)
 			break;
 		case 6:
 			Interaccion::rebote(h,e.suelo6);
+			break;
+		case 7:
+			Interaccion::rebote(h,e.suelo7);
+			break;
+		case 8:
+			Interaccion::rebote(h,e.suelo8);
+			break;
+		case 9:
+			Interaccion::rebote(h,e.suelo9);
+			break;
+		case 10:
+			Interaccion::rebote(h,e.suelo10);
+			break;
+		case 11:
+			Interaccion::rebote(h,e.suelo11);
+			break;
+		case 12:
+			Interaccion::rebote(h,e.suelo12);
+			break;
+		case 13:
+			Interaccion::rebote(h,e.suelo13);
+			break;
+		case 14:
+			Interaccion::rebote(h,e.suelo14);
+			break;
+		case 15:
+			Interaccion::rebote(h,e.suelo15);
+			break;
+		case 16:
+			Interaccion::rebote(h,e.suelo16);
 			break;
 		}
 	}
