@@ -13,6 +13,7 @@ private:
 public:
 	bool atacando; 
 	float radio;
+	float apoyo;
 	Personaje();
 	Vector3D GetPos();
 	float getRadio(){return radio;}

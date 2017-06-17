@@ -57,10 +57,37 @@ void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
 	// if(h.posicion.y<ymin)h.posicion.x=ymin; //PARA LA Y
 		if(h.posicion.z>zmax)h.posicion.z=zmax;
 		if(h.posicion.z<zmin)h.posicion.z=zmin;
-		if(ypersonaje>h.posicion.y)h.posicion.y= ypersonaje;  //PARA QUE NO SE CAIGA DEL PLANO Y SE VEA LA ESFERA ENTERA
+		//if(ypersonaje>h.posicion.y)h.posicion.y=ypersonaje;  //PARA QUE NO SE CAIGA DEL PLANO Y SE VEA LA ESFERA ENTERA
+		if((h.posicion.y-h.radio<s.limite2.y))h.posicion.y=h.radio+s.limite2.y;
 		// YPERSONAJE está cogido como la y del plano + el radio
-		if(s.limite2.y>h.posicion.y)h.posicion.z= s.limite1.z;
+		//if(ypersonaje>h.posicion.y)h.posicion.z=s.limite1.z;
 }
+
+void Interaccion::apoyo(Personaje &h, Escenario &e)
+{
+	switch(e.plano)
+	{
+	case 1:
+		h.apoyo=e.suelo1.limite2.y;
+		break;
+	case 2:
+		h.apoyo=e.suelo3.limite2.y;
+		break;
+	case 3:
+		h.apoyo=e.suelo3.limite2.y;
+		break;
+	case 4:
+		h.apoyo=e.suelo4.limite2.y;
+		break;
+	case 5:
+		h.apoyo=e.suelo5.limite2.y;
+		break;
+	case 6:
+		h.apoyo=e.suelo6.limite2.y;
+		break;
+	}
+}
+
 
 bool Interaccion::localizacion(Personaje &h, Suelo s)
 {
@@ -69,6 +96,15 @@ bool Interaccion::localizacion(Personaje &h, Suelo s)
 		return 1;
 	return 0;
 }
+bool Interaccion::localizacion2(Personaje &h, Suelo s)
+{
+	if((s.limite1.x)<=h.posicion.x && (s.limite4.x)>=h.posicion.x 
+		&& (s.limite1.z)<=h.posicion.z && (s.limite2.z)>=h.posicion.z
+		&& (s.limite1.y+h.radio)<=h.posicion.y)
+		return 1;
+	return 0;
+}
+
 
 bool Interaccion::localizacion2(Personaje &h,Escenario &e)
 {
@@ -77,7 +113,7 @@ bool Interaccion::localizacion2(Personaje &h,Escenario &e)
 	if(Interaccion::localizacion(h,e.suelo3)){e.plano=3;return 0;}
 	if(Interaccion::localizacion(h,e.suelo4)){e.plano=4;return 0;}
 	if(Interaccion::localizacion(h,e.suelo5)){e.plano=5;return 0;}
-	if(Interaccion::localizacion(h,e.suelo6)){e.plano=6;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo6)){e.plano=6;return 0;}
 	return 1;
 }
 void Interaccion::rebote(Personaje &h, Escenario &e)

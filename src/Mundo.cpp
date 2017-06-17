@@ -72,6 +72,7 @@ void Mundo::Mueve()
 	Interaccion::rebotecaja(personaje,caja2);
 	Interaccion::rebotecaja(personaje,caja3);
 	Interaccion::choque(personaje,monstruo3);
+	Interaccion::apoyo(personaje, escenario);
 	SeguirPersonaje(); // Desactivar para no seguirlo
 }
 
@@ -103,7 +104,7 @@ void Mundo::Inicializa()
 }
 
 
-void Mundo::Tecla(unsigned char key)  // NO HACE FALTA USARLA YA
+/*void Mundo::Tecla(unsigned char key)  // NO HACE FALTA USARLA YA
 {
 	switch(key)
 	{
@@ -132,7 +133,7 @@ void Mundo::Tecla(unsigned char key)  // NO HACE FALTA USARLA YA
 
 		// Podriamos hacer una funcion que compruebe que hay colision con cajas o suelo y si la hay que deje saltar
 	}
-}
+}*/
 
 void Mundo::TeclaEspecial(unsigned char key)
 {
@@ -161,7 +162,8 @@ void Mundo::VariasTeclas(bool keystatus[], bool keyspecial[])  // LA FUNCION IMP
 	if(keystatus['s'] || keystatus['S']|| keyspecial[GLUT_KEY_DOWN])personaje.SetDesplazamientoZ(0.075f);
 	if(keystatus[' '] || keystatus['n'] || keystatus['N'])
 	{
-		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
+		if(personaje.posicion.y<=(personaje.apoyo+personaje.radio))//Solo puede dar un salto si está en el suelo
+		//if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
 		personaje.SetVel(6.0f);		
 	}
 

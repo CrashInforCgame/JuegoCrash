@@ -5,6 +5,7 @@
 Personaje::Personaje(void)
 {
 	radio=1.0f;
+	apoyo=0;
 	aceleracion.x=0;
 	aceleracion.y=-9.8f;
 	aceleracion.z=0;
