@@ -46,8 +46,9 @@ void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
 {
 		float xmax=s.limite4.x;
 		float xmin=s.limite1.x;
-		float yplano=s.Ypuntoplano(h); // Esta funcion nos da la Y DEL PLANO EN ESA COORDENADA para que no caiga
-		float ypersonaje=yplano+h.radio; //PARA QUE SE VEA EL RADIO ENTERO LUEGO
+		//float yplano=s.Ypuntoplano(h); // Esta funcion nos da la Y DEL PLANO EN ESA COORDENADA para que no caiga
+		//float ypersonaje=yplano+h.radio; //PARA QUE SE VEA EL RADIO ENTERO LUEGO
+		float ypersonaje=s.limite2.y+h.radio;
 	// float ymin=s.limite1.y; // ESTO FUNCIONA SIEMPRE QUE SEAN PLANOS CON Y CONSTANTE SOLO
 		float zmax=s.limite2.z;
 		float zmin=s.limite1.z;
@@ -58,6 +59,7 @@ void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
 		if(h.posicion.z<zmin)h.posicion.z=zmin;
 		if(ypersonaje>h.posicion.y)h.posicion.y= ypersonaje;  //PARA QUE NO SE CAIGA DEL PLANO Y SE VEA LA ESFERA ENTERA
 		// YPERSONAJE está cogido como la y del plano + el radio
+		if(s.limite2.y>h.posicion.y)h.posicion.z= s.limite1.z;
 }
 
 bool Interaccion::localizacion(Personaje &h, Suelo s)
@@ -75,6 +77,7 @@ bool Interaccion::localizacion2(Personaje &h,Escenario &e)
 	if(Interaccion::localizacion(h,e.suelo3)){e.plano=3;return 0;}
 	if(Interaccion::localizacion(h,e.suelo4)){e.plano=4;return 0;}
 	if(Interaccion::localizacion(h,e.suelo5)){e.plano=5;return 0;}
+	if(Interaccion::localizacion(h,e.suelo6)){e.plano=6;return 0;}
 	return 1;
 }
 void Interaccion::rebote(Personaje &h, Escenario &e)
@@ -97,6 +100,9 @@ void Interaccion::rebote(Personaje &h, Escenario &e)
 			break;
 		case 5:
 			Interaccion::rebote(h,e.suelo5);
+			break;
+		case 6:
+			Interaccion::rebote(h,e.suelo6);
 			break;
 		}
 	}

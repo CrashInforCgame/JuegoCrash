@@ -9,6 +9,7 @@ private:
 	Suelo suelo3;
 	Suelo suelo4;
 	Suelo suelo5;
+	Suelo suelo6;
 	int plano;
 public:
 	Escenario();

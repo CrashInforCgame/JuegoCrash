@@ -35,6 +35,12 @@ Escenario::Escenario()
 		5.0F,0,-50.0F,
 		15.0F,0,-50.0F,
 		15.0F,0,-70.0F);
+
+	suelo6.setColor(140,50,0);
+	suelo6.SetPos(5.0F,3,-100.0F,
+		5.0F,3,-70.0F,
+		15.0F,3,-70.0F,
+		15.0F,3,-100.0F);
 }
 
 void Escenario::Dibuja()
@@ -44,6 +50,7 @@ void Escenario::Dibuja()
 	suelo3.Dibuja();
 	suelo4.Dibuja();
 	suelo5.Dibuja();
+	suelo6.Dibuja();
 }
 
 /*
