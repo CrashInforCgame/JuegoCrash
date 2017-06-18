@@ -227,9 +227,8 @@ bool Interaccion::choque(Personaje &h, Monstruo &m)
 bool Interaccion::choque(Personaje &h, Manzana &n)
 {
 	float distancia=(h.posicion-n.posicion).modulo(); 
-	return true;
 
-	if(distancia < h.getRadio()+n.getRadio()) n.posicion.x+=7;
+	if(distancia < h.getRadio()+n.getRadio()) return true;
 	return false;
 
 }
@@ -238,8 +237,8 @@ bool Interaccion::ataque(Personaje &h, Monstruo &m) // es como el
 	// y dentro del keypressed
 {
 	float distancia=(h.posicion-m.posicion).modulo(); 
-	if(distancia < h.getRadio()+m.getRadio()+0.1) 
-		{
+	if(distancia < h.getRadio()+m.getRadio()+0.16) 
+	{
 			return true;
 	}
 	return false;

@@ -5,6 +5,7 @@ class Manzana
 {
 public:
 	Manzana(void);
+	Manzana(float x, float z, float y=0.3); // PARA CONSTRUIR MANZANA, LA Y ESTARÁ AL FINAL, POR TANTO ES DIFERENTE A MONSTRUO
 	virtual ~Manzana(void);
 	friend class Interaccion;
 	void Mueve(float t);

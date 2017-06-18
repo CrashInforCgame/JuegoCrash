@@ -24,8 +24,10 @@ class Mundo
 	Caja caja1;
 	Caja caja2;
 	Caja caja3;
-	Manzana manzana1;
-	int contador; //PARA SACAR UNAS POSICIONES EN PANTALLA
+	int contador_pos; //PARA SACAR UNAS POSICIONES EN PANTALLA
+	int contador_ciclos; //CUENTA LAS VECES QUE SE HA IMPRESO EN PANTALLA PARA LIMPIARLA CADA X VECES
+	int contador_manzanas;	//CUENTA MANZANAS COMIDAS
+	int contador_monstruos; //CUENTA MONSTRUOS MATADOS
 
 public: 
 	void Tecla(unsigned char key);

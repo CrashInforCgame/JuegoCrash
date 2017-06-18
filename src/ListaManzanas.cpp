@@ -71,7 +71,7 @@ void ListaManzanas::eliminar(Manzana *e)
 
 }
 
-bool ListaManzanas::choque(Personaje &h)
+/*bool ListaManzanas::choque(Personaje &h)
 {
 	for(int i=0;i<numero;i++)
 	{
@@ -79,18 +79,18 @@ bool ListaManzanas::choque(Personaje &h)
 			return true;
 	}
 	return 0; //no hay colisión
-}
+}*/
 
-/*Manzana* ListaManzanas::colision(Personaje h)
+Manzana* ListaManzanas::choque(Personaje &h)
 {
 	for(int i=0;i<numero;i++)
 	{
-		if(Interaccion::colision(*(lista[i]),h))
+		if(Interaccion::choque(h,*lista[i]))
 			return lista[i];
 	}
 	return 0; //no hay colisión
 
-}*/
+}
 Manzana *ListaManzanas::operator [](int i)
 {
 	if(i>=numero)
@@ -100,4 +100,7 @@ Manzana *ListaManzanas::operator [](int i)
 	
 	return lista[i];
 }
-
+void ListaManzanas::operator+=(Manzana *m)
+{
+	agregar(m);
+}

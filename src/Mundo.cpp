@@ -73,7 +73,6 @@ void Mundo::Dibuja()
 	caja1.Dibuja();
 	caja2.Dibuja();
 	caja3.Dibuja();
-	manzana1.Dibuja();
 	monstruos.Dibuja();
 
 	manzanas.dibuja();
@@ -82,7 +81,6 @@ void Mundo::Dibuja()
 void Mundo::Mueve()
 {
 	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
-	manzana1.Mueve(0.025f);
 
 	monstruos.Mueve(0.025f);
 	if(monstruos.choque(personaje))
@@ -91,16 +89,26 @@ void Mundo::Mueve()
 		monstruos.destruirContenido();
 		inicializaMonstruos(monstruos);
 		personaje.SetPos(0,0,0);
+		contador_monstruos=0; // AL RESETEARSE LOS MONSTRUOS TAMBIEN LO HACE LA CUENTA
 	}
 	if(personaje.estado_ataque == 1) //AQUI EL PERSONAJE REVISA LAS INTERACCIONES DE ATAQUE PARA MATAR MONSTRUOS
 	{
 			Monstruo *aux = monstruos.ataque(personaje);
-			if(aux!=0) monstruos.eliminar(aux);
+			if(aux!=0) 
+			{
+				monstruos.eliminar(aux);
+				contador_monstruos++;
+			}
 	}
 	personaje.ataca(); // AQUI PERSONAJE SE ENCARGA DE SUS ESTADOS DE ATAQUE
 	manzanas.choque(personaje);
 	manzanas.mueve(0.025f);
-
+	Manzana *aux=manzanas.choque(personaje); 
+	if(!aux==0)
+	{
+		manzanas.eliminar(aux);
+		contador_manzanas++;	// AUMENTA LA CUENTA DE MANZANAS
+	}
 	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebotecaja(personaje,caja1);
 	Interaccion::rebotecaja(personaje,caja2);
@@ -112,13 +120,24 @@ void Mundo::Mueve()
 
 void Mundo::verpos_consola()
 {
-	if(contador%40 == 0) {
-		std::cout << "Posicion personaje [X Y Z]:               "<< personaje.posicion.x << "       " << personaje.posicion.y << "      " << personaje.posicion.z << std::endl;
-		contador = 0;	
-	}
-	contador++;
+	if(contador_pos%80 == 0) { // AQUI SE AJUSTA CADA CUANTO TIEMPO QUEREMOS QUE SE ACTUALICE LA CONSOLA. MAS O MENOS 40 ES CADA 1 SEGUNDO, POR TANTO 80 ES CADA 2
 
+		if(contador_ciclos>0)  
+		{
+			system("cls");
+			contador_ciclos=0;
+		} 
+
+		std::cout << "Posicion personaje [X Y Z]:               "<< personaje.posicion.x << "       " << personaje.posicion.y << "      " << personaje.posicion.z << std::endl;
+		std::cout << "Manzanas:       "<< contador_manzanas << std::endl;
+		std::cout << "Monstruos muertos:         " << contador_monstruos << std::endl;
+		std::cout << "Quedan " << monstruos.getNumero() << std::endl;
+		contador_pos = 0;	
+		contador_ciclos++;
+	}
+	contador_pos++;
 }
+
 void Mundo::Inicializa()
 {
 	x_ojo=0;
@@ -130,11 +149,15 @@ void Mundo::Inicializa()
 	Manzana *n1=new Manzana;
 	n1->SetPos(4,3,-20);
 	manzanas.agregar(n1);
+	Manzana *n2=new Manzana;
+	n2->SetPos(-2,0.3,-7);
+	manzanas.agregar(n2);
+
+	manzanas+=new Manzana(3,-10); // AL USAR NEW MANZANA AHORA LOS PARAMETROS SON: (X,Z,Y=0.3)
 
 	caja1.SetPos(4.5,0.5,-5);
 	caja2.SetPos(4.5,1.5,-5);
 	caja3.SetPos(0.5,0.5,-2);
-	manzana1.SetPos(3,0.5,-2);
 
 
 }
