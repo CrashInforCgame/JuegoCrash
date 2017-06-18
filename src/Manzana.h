@@ -5,11 +5,12 @@ class Manzana
 {
 public:
 	Manzana(void);
-	~Manzana(void);
+	virtual ~Manzana(void);
 	friend class Interaccion;
 	void Mueve(float t);
 	void Dibuja();
 	void SetPos(float x,float y,float z);
+	float getRadio(){return radio;}
 	Vector3D getPos(){return posicion;}
 private:
 	float radio;

@@ -1,7 +1,9 @@
 #pragma once
 #include "Manzana.h"
 #include "Personaje.h"
+#include "Interaccion.h"
 #define MAX_MANZANAS 120
+
 class ListaManzanas
 {
 public:
@@ -13,11 +15,12 @@ public:
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Manzana *m);
-	Manzana* colision(Personaje &h);
+	bool choque(Personaje &h);
 	Manzana * operator [](int i);
 	int getNumero(){return numero;}
 private:
 	Manzana* lista[MAX_MANZANAS];
 	int numero;
 };
+
 

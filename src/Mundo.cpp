@@ -66,12 +66,12 @@ void Mundo::Mueve()
 			Monstruo *aux = monstruos.ataque(personaje);
 			if(aux!=0) monstruos.eliminar(aux);
 	}
+	manzanas.choque(personaje);
 
 	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebotecaja(personaje,caja1);
 	Interaccion::rebotecaja(personaje,caja2);
 	Interaccion::rebotecaja(personaje,caja3);
-	Interaccion::choque(personaje,monstruo3);
 	Interaccion::apoyo(personaje, escenario);
 	SeguirPersonaje(); // Desactivar para no seguirlo
 }
@@ -91,6 +91,10 @@ void Mundo::Inicializa()
 	Monstruo *m3=new MonstruoSalto;
 	m3->SetPos(0,3,-5);
 	monstruos.agregar(m3);
+
+	Manzana *n1=new Manzana;
+	n1->SetPos(4,3,-20);
+	manzanas.agregar(n1);
 
 	caja1.SetPos(4.5,0.5,-5);
 	caja2.SetPos(4.5,1.5,-5);

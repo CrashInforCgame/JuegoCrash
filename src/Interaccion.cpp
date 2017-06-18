@@ -12,6 +12,7 @@ Interaccion::~Interaccion(void)
 
 }
 
+
 bool Interaccion::rebotecaja(Personaje &h, Caja c)
 {
 	float xmin=c.posicion.x-c.lado/2-h.radio;
@@ -214,10 +215,20 @@ void Interaccion::rebote(Personaje &h, Escenario &e)
 bool Interaccion::choque(Personaje &h, Monstruo &m)
 {
 	float distancia=(h.posicion-m.posicion).modulo(); 
+	return true;
 
 	if(distancia < h.getRadio()+m.getRadio()) m.posicion.x+=7;
 	return false;
 
+}
+
+bool Interaccion::choque(Personaje &h, Manzana &n)
+{
+	float distancia=(h.posicion-n.posicion).modulo(); 
+	return true;
+
+	if(distancia < h.getRadio()+n.getRadio()) n.posicion.x+=7;
+	return false;
 
 }
 bool Interaccion::ataque(Personaje &h, Monstruo &m) // es como el 

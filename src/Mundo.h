@@ -7,12 +7,15 @@
 #include "MonstruoZ.h"
 #include "MonstruoSalto.h"
 #include "ListaMonstruos.h"
+#include "ListaManzanas.h"
+
 class Mundo
 {
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
 	ListaMonstruos monstruos;
+	ListaManzanas manzanas;
 	Escenario escenario;
 	Personaje personaje;
 	Personaje personaje2;
@@ -23,6 +26,7 @@ class Mundo
 	MonstruoZ monstruo2;;
 	MonstruoSalto monstruo3;
 	Manzana manzana1;
+
 public: 
 	void Tecla(unsigned char key);
 	void VariasTeclas(bool keystatus[], bool keyspecial[]);  // ESTA ES LA FUNCION QUE USAREMOSS
