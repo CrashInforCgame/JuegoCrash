@@ -9,9 +9,10 @@ private:
 	unsigned char azul;
 	//float radio;
 	float masa;
+	int cuenta_ataque;
 	
 public:
-	bool atacando; 
+	int estado_ataque; //ESTADO DEL ATAQUE 0: nada    1: atacando    2: enfriamiento, no puedes atacar hasta que pase un tiempo 
 	float radio;
 	float apoyo;
 	Personaje();
@@ -28,7 +29,7 @@ public:
 	Vector3D posicion;
 	Vector3D velocidad;
 	Vector3D aceleracion;
-
+	void ataca();
 	friend class Interaccion;
 
 };

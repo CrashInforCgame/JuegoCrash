@@ -2,7 +2,7 @@
 #include "Monstruo.h"
 #include "Interaccion.h"
 #include "Personaje.h"
-#define MAX_MONSTRUOS 30
+#define MAX_MONSTRUOS 40
 class ListaMonstruos
 {
 public:
@@ -19,6 +19,7 @@ public:
 	Monstruo* ataque(Personaje &h);
 	Monstruo * operator [](int i);
 	int getNumero(){return numero;}
+	void operator+=(Monstruo *);
 private:
 	Monstruo* lista[MAX_MONSTRUOS];
 	int numero;
