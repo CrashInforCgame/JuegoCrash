@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "glut.h"
 
+
 bool keystatus[256] = {false}; //PARA USAR TECLAS NORMALES SI ESTAN PULSADAS
 bool keySpecialStates[246] = {false}; // PARA USAR TECLAS ESPECIALES PULSADAS
 Mundo mundo;

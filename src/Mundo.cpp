@@ -5,6 +5,7 @@
 #include "glut.h"
 #include <math.h>
 
+
 void Mundo::RotarOjo()
 {
 	float dist=sqrt(x_ojo*x_ojo+z_ojo*z_ojo);
@@ -44,29 +45,25 @@ void Mundo::Dibuja()
 	caja2.Dibuja();
 	caja3.Dibuja();
 	manzana1.Dibuja();
-	monstruo1.Dibuja();
-	monstruo2.Dibuja();
-	monstruo3.Dibuja();
 	monstruos.Dibuja();
+
+	manzanas.dibuja();
 }
 
 void Mundo::Mueve()
 {
 	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
 	manzana1.Mueve(0.025f);
-	monstruo1.Mueve(0.025f);
-	monstruo2.Mueve(0.025f);
-	monstruo3.Mueve(0.025f);
 
 	monstruos.Mueve(0.025f);
 	monstruos.choque(personaje);
 	if(personaje.atacando == 1)
 	{
-			Interaccion::ataque(personaje, monstruo3);
 			Monstruo *aux = monstruos.ataque(personaje);
 			if(aux!=0) monstruos.eliminar(aux);
 	}
 	manzanas.choque(personaje);
+	manzanas.mueve(0.025f);
 
 	Interaccion::rebote(personaje,escenario);
 	Interaccion::rebotecaja(personaje,caja1);
@@ -74,23 +71,46 @@ void Mundo::Mueve()
 	Interaccion::rebotecaja(personaje,caja3);
 	Interaccion::apoyo(personaje, escenario);
 	SeguirPersonaje(); // Desactivar para no seguirlo
+	verpos_consola(); //ESTA FUNCION NOS VA DANDO LA POSICION EN CONSOLA, UTIL PARA LUEGO PONER COSAS
 }
 
+void Mundo::verpos_consola()
+{
+	if(contador%40 == 0) {
+		std::cout << personaje.posicion.x << " " << personaje.posicion.y << " " << personaje.posicion.z << std::endl;
+		contador = 0;	
+	}
+	contador++;
+
+}
 void Mundo::Inicializa()
 {
 	x_ojo=0;
 	y_ojo=10;
 	z_ojo=20;
 	//Inicializando monstruos para lista
-	Monstruo *m1=new MonstruoSalto;
-	m1->SetPos(3,3,-12);
-	monstruos.agregar(m1);
-	Monstruo *m2=new MonstruoX;
-	m2->SetPos(3,1,-18);
-	monstruos.agregar(m2);
-	Monstruo *m3=new MonstruoSalto;
-	m3->SetPos(0,3,-5);
-	monstruos.agregar(m3);
+	
+	float y1xz=(new MonstruoZ)->getRadio(); // LA ALTURA A LA QUE ESTARAN LOS MONSTRUOS X Y Z EN EL PRIMER PLANO
+	float y2xz=y1xz+3; //ALTURA 2o plano
+	//Monstruos que se mueven en X
+	monstruos+=new MonstruoX(0,y1xz,-17);
+	monstruos+=new MonstruoX(0,y1xz,-8.5);
+	monstruos+=new MonstruoX(20,y1xz,-35);
+	monstruos+=new MonstruoX(10,y1xz,-50);
+	monstruos+=new MonstruoX(10,y1xz,-54);
+
+	//Monstruos que se mueven en Z
+	monstruos+=new MonstruoZ(10,y1xz,-25);
+	monstruos+=new MonstruoZ(15,y1xz,-25);
+	monstruos+=new MonstruoZ(15,y1xz,-45);
+	monstruos+=new MonstruoZ(9,y2xz,-76);
+	monstruos+=new MonstruoZ(12.65,y2xz,-83);
+	//Monstruos que saltan						//HACEMOS QUE CAIGAN DESDE ALTURAS DIFERENTES PARA DESINCRONIZAR LOS SALTOS
+	monstruos+=new MonstruoSalto(15,y1xz+1,-26);
+	monstruos+=new MonstruoSalto(-2,y1xz,-25);
+	monstruos+=new MonstruoSalto(12.3,y1xz+3,-48);
+	monstruos+=new MonstruoSalto(9,y1xz,-44);
+	monstruos+=new MonstruoSalto(8,y1xz+5,-59);
 
 	Manzana *n1=new Manzana;
 	n1->SetPos(4,3,-20);
@@ -100,9 +120,6 @@ void Mundo::Inicializa()
 	caja2.SetPos(4.5,1.5,-5);
 	caja3.SetPos(0.5,0.5,-2);
 	manzana1.SetPos(3,0.5,-2);
-	monstruo1.SetPos(8,1,-25);
-	monstruo2.SetPos(15,1,-30);
-	monstruo3.SetPos(3,1,-7);
 
 
 }
