@@ -54,7 +54,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);GLUT_BINDING_LIB;</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>lib;src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -119,6 +119,7 @@
     <ClInclude Include="src\Movimientos.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Personaje.h" />
+    <ClInclude Include="src\randomnum.h" />
     <ClInclude Include="src\Suelo.h" />
     <ClInclude Include="src\Vector3D.h" />
   </ItemGroup>

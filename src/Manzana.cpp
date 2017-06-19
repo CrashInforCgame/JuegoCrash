@@ -6,7 +6,12 @@ Manzana::Manzana(void)
 	radio= 0.25f;
 	estado=2;
 }
-
+Manzana::Manzana(float x, float z, float y)
+{
+	radio= 0.25f;
+	estado=2;
+	SetPos(x,y,z);
+}
 
 Manzana::~Manzana(void)
 {

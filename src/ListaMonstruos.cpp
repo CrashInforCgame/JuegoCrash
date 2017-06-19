@@ -93,3 +93,8 @@ Monstruo *ListaMonstruos::operator [](int i)
 		i=0;
 	return lista[i];
 }
+
+void ListaMonstruos::operator+=(Monstruo *m)
+{
+	agregar(m);
+}

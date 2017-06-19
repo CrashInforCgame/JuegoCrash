@@ -101,6 +101,7 @@ void KeySpecialUp(int key, int x_t, int y_t)
 /*void OnSpecialKeyboardDown(int key, int x_t, int y_t) 
 {
 	mundo.TeclaEspecial(key);
+
 	glutPostRedisplay();
 }*/  //Lo quito porque da error
 

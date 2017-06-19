@@ -189,6 +189,7 @@ void Mundo::Inicializa()
 		if(personaje.posicion.y<=personaje.radio)//Solo puede dar un salto si está en el suelo
 		personaje.SetVel(6.0f);//para ello he tenido que poner en public el Vector3D posicion
 		break;						//en personaje.h-->Buscar otra alternativa
+
 		// Podriamos hacer una funcion que compruebe que hay colision con cajas o suelo y si la hay que deje saltar
 	}
 }*/
@@ -231,4 +232,3 @@ void Mundo::VariasTeclas(bool keystatus[], bool keyspecial[])  // LA FUNCION IMP
 		}
 
 }
-
