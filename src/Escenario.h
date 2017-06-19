@@ -20,6 +20,8 @@ private:
 	Suelo suelo14;
 	Suelo suelo15;
 	Suelo suelo16;
+	Suelo suelo17;
+	Suelo suelo18;
 
 	int plano;
 public:

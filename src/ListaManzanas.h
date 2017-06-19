@@ -23,5 +23,3 @@ private:
 	Manzana* lista[MAX_MANZANAS];
 	int numero;
 };
-
-
