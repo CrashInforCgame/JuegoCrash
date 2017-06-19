@@ -2,8 +2,28 @@
 #include "glut.h"
 #include "Vector3D.h"
 
-Personaje::Personaje(void)
+/*Personaje::Personaje(void)
 {
+	radio=0.4f;
+	apoyo=0;
+	aceleracion.x=0;
+	aceleracion.y=-9.8f;
+	aceleracion.z=0;
+	velocidad.x=0;
+	velocidad.y=0;
+	velocidad.z=0;
+	rojo=125;
+	verde=125;
+	azul=34;
+	posicion.x=0;
+	posicion.y=4+radio;
+	posicion.z=0;
+}*/
+
+Personaje::Personaje():sprite("imagenes1/pang.png",5)
+{
+	sprite.setCenter(1,0);
+	sprite.setSize(2,2);
 	radio=0.4f;
 	apoyo=0;
 	aceleracion.x=0;
@@ -50,6 +70,7 @@ void Personaje::Dibuja()
 	glTranslatef(posicion.x,posicion.y,posicion.z);
 	glutSolidSphere(radio,20,20);
 	glTranslatef(-posicion.x,-posicion.y,-posicion.z);
+
 }
 
 void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra que poner esto de forma más
@@ -65,7 +86,7 @@ void Personaje::Mueve(float t)//Esta parte irá en la clase movimientos y habra q
 	/*posicion = posicion+velocidad*t+aceleracion*(0.5f*t*t);
 	velocidad = velocidad+aceleracion*t;*/
 	if((posicion.y-radio<0))posicion.y=radio; // Para que de momento no caiga por la gravedad al vacio, hay que hacer un collider con suelos
-
+	sprite.loop();
 }
 void Personaje::Pesaje(void)
 {
@@ -95,3 +116,7 @@ void Personaje::ataca()
 	}
 
 }
+
+
+
+
