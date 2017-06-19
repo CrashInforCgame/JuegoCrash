@@ -15,12 +15,11 @@ public:
 	void destruirContenido();
 	void eliminar(int index);
 	void eliminar(Manzana *m);
-	bool choque(Personaje &h);
+	Manzana* choque(Personaje &h);
 	Manzana * operator [](int i);
 	int getNumero(){return numero;}
+	void operator+=(Manzana *);
 private:
 	Manzana* lista[MAX_MANZANAS];
 	int numero;
 };
-
-

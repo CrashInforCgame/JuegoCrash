@@ -215,9 +215,11 @@ void Interaccion::rebote(Personaje &h, Escenario &e)
 bool Interaccion::choque(Personaje &h, Monstruo &m)
 {
 	float distancia=(h.posicion-m.posicion).modulo(); 
-	return true;
 
-	if(distancia < h.getRadio()+m.getRadio()) m.posicion.x+=7;
+	if(distancia < h.getRadio()+m.getRadio()) 
+		{
+			return true;
+		}
 	return false;
 
 }
@@ -225,9 +227,8 @@ bool Interaccion::choque(Personaje &h, Monstruo &m)
 bool Interaccion::choque(Personaje &h, Manzana &n)
 {
 	float distancia=(h.posicion-n.posicion).modulo(); 
-	return true;
 
-	if(distancia < h.getRadio()+n.getRadio()) n.posicion.x+=7;
+	if(distancia < h.getRadio()+n.getRadio()) return true;
 	return false;
 
 }
@@ -235,11 +236,9 @@ bool Interaccion::ataque(Personaje &h, Monstruo &m) // es como el
 	//choque pero esta se activara a una distancia inferior
 	// y dentro del keypressed
 {
-	h.atacando=1;
 	float distancia=(h.posicion-m.posicion).modulo(); 
-	if(distancia < h.getRadio()+m.getRadio()+0.1) 
-		{
-			m.posicion.x-=7;
+	if(distancia < h.getRadio()+m.getRadio()+0.16) 
+	{
 			return true;
 	}
 	return false;

@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include"Escenario.h"
 #include"Personaje.h"
 #include "Caja.h"
@@ -8,6 +9,7 @@
 #include "MonstruoSalto.h"
 #include "ListaMonstruos.h"
 #include "ListaManzanas.h"
+
 
 class Mundo
 {
@@ -22,10 +24,10 @@ class Mundo
 	Caja caja1;
 	Caja caja2;
 	Caja caja3;
-	MonstruoX monstruo1;
-	MonstruoZ monstruo2;;
-	MonstruoSalto monstruo3;
-	Manzana manzana1;
+	int contador_pos; //PARA SACAR UNAS POSICIONES EN PANTALLA
+	int contador_ciclos; //CUENTA LAS VECES QUE SE HA IMPRESO EN PANTALLA PARA LIMPIARLA CADA X VECES
+	int contador_manzanas;	//CUENTA MANZANAS COMIDAS
+	int contador_monstruos; //CUENTA MONSTRUOS MATADOS
 
 public: 
 	void Tecla(unsigned char key);
@@ -36,4 +38,6 @@ public:
 	void SeguirPersonaje();
 	void Mueve();
 	void Dibuja();
+	void verpos_consola(); //NOS DA LA POSICION DEL PERSONAJE
+	// EN CONSOLA, UTIL PARA COLOCAR MONSTRUOS
 };

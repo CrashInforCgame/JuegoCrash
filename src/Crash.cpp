@@ -1,6 +1,7 @@
 #include "Mundo.h"
 #include "glut.h"
 
+
 bool keystatus[256] = {false}; //PARA USAR TECLAS NORMALES SI ESTAN PULSADAS
 bool keySpecialStates[246] = {false}; // PARA USAR TECLAS ESPECIALES PULSADAS
 Mundo mundo;
@@ -100,7 +101,6 @@ void KeySpecialUp(int key, int x_t, int y_t)
 /*void OnSpecialKeyboardDown(int key, int x_t, int y_t) 
 {
 	mundo.TeclaEspecial(key);
-
 	glutPostRedisplay();
 }*/  //Lo quito porque da error
 

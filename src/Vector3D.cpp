@@ -1,5 +1,4 @@
 #include "Vector3D.h"
-#include "glut.h"
 #include <math.h>
 
 

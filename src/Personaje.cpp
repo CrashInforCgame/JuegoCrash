@@ -44,8 +44,9 @@ void Personaje::SetDesplazamientoX(float px)
 
 void Personaje::Dibuja()
 {
-	if(atacando==0) glColor3ub(rojo,verde,azul);// Para el color si no ataca
-	if(atacando==1) glColor3ub(rojo,0,azul); // El color si ataca
+	if(estado_ataque==0) glColor3ub(rojo,verde,azul);// Para el color si no ataca
+	if(estado_ataque==1) glColor3ub(rojo,0,azul); // El color si ataca
+	if(estado_ataque==2) glColor3ub(0,verde,255); // El color si esta en enfriamiento
 	glTranslatef(posicion.x,posicion.y,posicion.z);
 	glutSolidSphere(radio,20,20);
 	glTranslatef(-posicion.x,-posicion.y,-posicion.z);
@@ -71,3 +72,26 @@ void Personaje::Pesaje(void)
 	masa=4*3,14*radio*radio;
 }
 Vector3D Personaje::GetPos(){return posicion;}
+
+void Personaje::ataca()
+{
+	if(estado_ataque==1)
+	{
+		cuenta_ataque++;
+		if(cuenta_ataque>50) 
+		{
+			estado_ataque=2;
+			cuenta_ataque=0;
+		}
+	}
+	if(estado_ataque==2)
+	{
+		cuenta_ataque++;
+		if(cuenta_ataque>25)
+		{
+			estado_ataque=0;
+			cuenta_ataque=0;
+		}
+	}
+
+}

@@ -97,7 +97,6 @@
     <ClCompile Include="src\MonstruoX.cpp" />
     <ClCompile Include="src\MonstruoZ.cpp" />
     <ClCompile Include="src\Movimientos.cpp" />
-    <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Crash.cpp" />
     <ClCompile Include="src\Personaje.cpp" />
     <ClCompile Include="src\Suelo.cpp" />

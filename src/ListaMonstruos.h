@@ -20,7 +20,7 @@ public:
 	Monstruo * operator [](int i);
 	int getNumero(){return numero;}
 private:
-	Monstruo* lista[MAX_MONSTRUOS];
+	Monstruo * lista[MAX_MONSTRUOS];
 	int numero;
 };
 
