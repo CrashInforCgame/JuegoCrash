@@ -14,6 +14,7 @@ private:
 	Vector3D limite3;
 	Vector3D limite4;
 public: 	
+	Suelo():rojo(150),azul(0),verde(50) {}
 	void Dibuja();//Para poder compaginar los limites y que 
 							//el extremo del personaje no pase la pared
 	void Dibuja2();

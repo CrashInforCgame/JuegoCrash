@@ -43,92 +43,52 @@ bool Interaccion::rebotecaja(Personaje &h, Caja c)
 	return false;
 	
 }
-void Interaccion::rebote(Personaje &h, Suelo s) //FUNCION PLANTEADA PARA TODO
+void Interaccion::rebote(Personaje &h, Suelo *s) //FUNCION PLANTEADA PARA TODO
 {
-		float xmax=s.limite4.x;
-		float xmin=s.limite1.x;
+		float xmax=s->limite4.x;
+		float xmin=s->limite1.x;
 		//float yplano=s.Ypuntoplano(h); // Esta funcion nos da la Y DEL PLANO EN ESA COORDENADA para que no caiga
 		//float ypersonaje=yplano+h.radio; //PARA QUE SE VEA EL RADIO ENTERO LUEGO
-		float ypersonaje=s.limite2.y+h.radio;
+		float ypersonaje=s->limite2.y+h.radio;
 	// float ymin=s.limite1.y; // ESTO FUNCIONA SIEMPRE QUE SEAN PLANOS CON Y CONSTANTE SOLO
-		float zmax=s.limite2.z;
-		float zmin=s.limite1.z;
+		float zmax=s->limite2.z;
+		float zmin=s->limite1.z;
 		if(h.posicion.x>xmax)h.posicion.x=xmax;
 		if(h.posicion.x<xmin)h.posicion.x=xmin;
 	// if(h.posicion.y<ymin)h.posicion.x=ymin; //PARA LA Y
 		if(h.posicion.z>zmax)h.posicion.z=zmax;
 		if(h.posicion.z<zmin)h.posicion.z=zmin;
 		//if(ypersonaje>h.posicion.y)h.posicion.y=ypersonaje;  //PARA QUE NO SE CAIGA DEL PLANO Y SE VEA LA ESFERA ENTERA
-		if((h.posicion.y-h.radio<s.limite2.y))h.posicion.y=h.radio+s.limite2.y;
+		if((h.posicion.y-h.radio<=s->limite2.y))h.posicion.y=h.radio+s->limite2.y;
 		// YPERSONAJE está cogido como la y del plano + el radio
 		//if(ypersonaje>h.posicion.y)h.posicion.z=s.limite1.z;
 }
 
-void Interaccion::apoyo(Personaje &h, Escenario &e)// se puede optimizar con un contenedor
+void Interaccion::apoyo(Personaje &h, Escenario e)// se puede optimizar con un contenedor
 {
-	switch(e.plano)
+	for(int i=0;i<e.numero;i++)
 	{
-	case 1:
-		h.apoyo=e.suelo1.limite2.y;
-		break;
-	case 2:
-		h.apoyo=e.suelo3.limite2.y;
-		break;
-	case 3:
-		h.apoyo=e.suelo3.limite2.y;
-		break;
-	case 4:
-		h.apoyo=e.suelo4.limite2.y;
-		break;
-	case 5:
-		h.apoyo=e.suelo5.limite2.y;
-		break;
-	case 6:
-		h.apoyo=e.suelo6.limite2.y;
-		break;
-	case 7:
-		h.apoyo=e.suelo7.limite2.y;
-		break;
-	case 8:
-		h.apoyo=e.suelo8.limite2.y;
-		break;
-	case 9:
-		h.apoyo=e.suelo9.limite2.y;
-		break;
-	case 11:
-		h.apoyo=e.suelo11.limite2.y;
-		break;
-	case 12:
-		h.apoyo=e.suelo12.limite2.y;
-		break;
-	case 13:
-		h.apoyo=e.suelo13.limite2.y;
-		break;
-	case 14:
-		h.apoyo=e.suelo14.limite2.y;
-		break;
-	case 15:
-		h.apoyo=e.suelo15.limite2.y;
-		break;
-	case 16:
-		h.apoyo=e.suelo16.limite2.y;
-		break;
+		if(e.plano==i)
+		{
+			h.apoyo=e.lista[i]->limite2.y;
+			return;
+		}
 	}
 }
 
 
-bool Interaccion::localizacion(Personaje &h, Suelo s)
+bool Interaccion::localizacion(Personaje &h, Suelo *s)
 {
-	if((s.limite1.x)<=h.posicion.x && (s.limite4.x)>=h.posicion.x 
-		&& (s.limite1.z)<=h.posicion.z && (s.limite2.z)>=h.posicion.z)
+	if((s->limite1.x)<=h.posicion.x && (s->limite4.x)>=h.posicion.x 
+		&& (s->limite1.z)<=h.posicion.z && (s->limite2.z)>=h.posicion.z)
 		return 1;
 	return 0;
 }
-bool Interaccion::localizacion2(Personaje &h, Suelo s) //Para planos con altura
+bool Interaccion::localizacion2(Personaje &h, Suelo *s) //Para planos con altura
 {
-	if((s.limite1.x)<=h.posicion.x && (s.limite4.x)>=h.posicion.x 
-		&& (s.limite1.z)<=h.posicion.z && (s.limite2.z)>=h.posicion.z
-		&& (s.limite1.y+h.radio)<h.posicion.y)//No poner menor o igual, solo menor
+	if((s->limite1.x)<=h.posicion.x && (s->limite4.x)>=h.posicion.x 
+		&& (s->limite1.z)<=h.posicion.z && (s->limite2.z)>=h.posicion.z
+		&& (s->limite1.y+h.radio)<=(h.posicion.y))//No poner menor o igual, solo menor
 		return 1;
 	return 0;
 }
@@ -136,7 +96,11 @@ bool Interaccion::localizacion2(Personaje &h, Suelo s) //Para planos con altura
 
 bool Interaccion::localizacion2(Personaje &h,Escenario &e)
 {
-	if(Interaccion::localizacion(h,e.suelo1)){e.plano=1;return 0;}
+	for(int i=0;i<e.numero;i++)
+
+		{if(Interaccion::localizacion2(h,e.lista[i])){e.plano=i;return 0;}}
+
+	/*if(Interaccion::localizacion(h,e.suelo1)){e.plano=1;return 0;}
 	if(Interaccion::localizacion(h,e.suelo2)){e.plano=2;return 0;}
 	if(Interaccion::localizacion(h,e.suelo3)){e.plano=3;return 0;}
 	if(Interaccion::localizacion(h,e.suelo4)){e.plano=4;return 0;}
@@ -151,14 +115,23 @@ bool Interaccion::localizacion2(Personaje &h,Escenario &e)
 	if(Interaccion::localizacion2(h,e.suelo13)){e.plano=13;return 0;}
 	if(Interaccion::localizacion2(h,e.suelo14)){e.plano=14;return 0;}
 	if(Interaccion::localizacion2(h,e.suelo15)){e.plano=15;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo16)){e.plano=16;return 0;}
+	if(Interaccion::localizacion2(h,e.suelo16)){e.plano=16;return 0;}*/
 	return 1;
 }
 void Interaccion::rebote(Personaje &h, Escenario &e)
 {
 	if(Interaccion::localizacion2(h,e))
 	{
-		switch(e.plano)
+		for(int i=0;i<e.numero;i++)
+		{
+			if(e.plano==i)
+			{
+				Interaccion::rebote(h,e.lista[i]);
+				return;
+			}
+		}
+
+		/*switch(e.plano)
 		{
 		case 1:
 			Interaccion::rebote(h,e.suelo1);
@@ -208,7 +181,7 @@ void Interaccion::rebote(Personaje &h, Escenario &e)
 		case 16:
 			Interaccion::rebote(h,e.suelo16);
 			break;
-		}
+		}*/
 	}
 }
 
@@ -241,5 +214,19 @@ bool Interaccion::ataque(Personaje &h, Monstruo &m) // es como el
 	{
 			return true;
 	}
+	return false;
+}
+
+bool Interaccion::Comprobacion1(Escenario e) //método para determinar la orientacion del suelo para el movimiento de cámara
+{
+	if((e.lista[e.plano]->limite4.z==e.lista[e.plano+1]->limite4.z))
+		return true;
+	return false;
+}
+
+bool Interaccion::Comprobacion2(Personaje h, Escenario e) //método para determinar la orientacion del suelo para el movimiento de cámara
+{
+	if((e.lista[e.plano+1]->limite2.z>=h.posicion.z))
+		return true;
 	return false;
 }

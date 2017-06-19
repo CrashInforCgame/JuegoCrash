@@ -1,11 +1,17 @@
 #pragma once
 #include "Suelo.h" 
 #include "Personaje.h" 
+#define MAX_SUELOS 120
+
 class Escenario
 {
 private:
+	Suelo* lista[MAX_SUELOS];
+	Suelo* lista2[MAX_SUELOS];
+	int numero;
+	int numero2;
 	Suelo suelo1;
-	Suelo suelo2;
+	/*Suelo suelo2;
 	Suelo suelo3;
 	Suelo suelo4;
 	Suelo suelo5;
@@ -22,11 +28,15 @@ private:
 	Suelo suelo16;
 	Suelo suelo17;
 	Suelo suelo18;
-	Suelo suelo19;
-
+	Suelo suelo19;*/
 	int plano;
 public:
 	Escenario();
 	void Dibuja(void);
+	bool agregar (Suelo *m);
+	bool agregar2 (Suelo *m);
+
 friend class Interaccion;
+friend class Mundo;
+
 };

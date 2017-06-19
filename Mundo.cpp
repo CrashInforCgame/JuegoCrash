@@ -35,21 +35,89 @@ void inicializaMonstruos(ListaMonstruos &monstruos)  //USAREMOS ESTA FUNCION PAR
 
 }
 
-void Mundo::RotarOjo()
+/*void Mundo::RotarOjo()
 {
 	float dist=sqrt(x_ojo*x_ojo+z_ojo*z_ojo);
 	float ang=atan2(z_ojo,x_ojo);
 	ang+=0.05f;
 	x_ojo=dist*cos(ang);
 	z_ojo=dist*sin(ang);
-}
+}*/
 void Mundo::SeguirPersonaje()
 {
-	x_ojo=personaje.GetPos().x;
+	x_ojo=personaje.GetPos().x + 0;
 	y_ojo=personaje.GetPos().y + 4;
 	z_ojo=personaje.GetPos().z + 10;  //Seguimiento cutre de camara
+}
+	/*x_ojo=0;
+	y_ojo=4;
+	z_ojo=personaje.GetPos().z + 10;*/
+
+	/*if(Interaccion::Comprobacion1(escenario))
+	{
+		if(Interaccion::Comprobacion2(personaje,escenario))
+		{
+			if((x_ojo+1)<personaje.GetPos().x)
+			{
+				x_ojo = 2*(personaje.GetPos().x-a); //EL 2 es el factor de giro de la cámara que hay que regularlo
+				//z_ojo = c - 1.5*(personaje.GetPos().x-5); 
+				return;
+			}
+			else
+			{
+				x_ojo = personaje.GetPos().x;
+				return;
+			}
+		}
+	}
+// principal, más largo que ancho el suelo
+	{
+		x_ojo = 0;
+		y_ojo = 4;
+		z_ojo = personaje.GetPos().z + 10;
+		a = x_ojo;
+		b = y_ojo;
+		c = z_ojo;
+		return;
+	}
 	
 }
+/*void Mundo::funcion_gluLookAt() //La del ojo es la de arriba y aquí gestionamos hacia donde apunta
+{
+	if(Interaccion::Comprobacion1(escenario))
+	{
+		if(Interaccion::Comprobacion2(personaje,escenario))
+		{
+			if((x_ojo+1)<personaje.GetPos().x)
+			{
+				d=personaje.GetPos().x*0.4;
+				gluLookAt(x_ojo, y_ojo, z_ojo, 
+				   d, e, f,
+					0.0, 1.0, 0.0);    
+				return;
+			}
+			else
+			{
+				d=personaje.GetPos().x;
+				f=personaje.GetPos().z;
+				gluLookAt(x_ojo, y_ojo, z_ojo, 
+				   d, e, f,
+					0.0, 1.0, 0.0);    
+				return;
+			}
+		}
+	}
+ // principal, más largo que ancho el suelo
+	{
+		d=personaje.GetPos().x*0.4;
+		e=0;
+		f=personaje.GetPos().z;
+		gluLookAt(x_ojo, y_ojo, z_ojo, 
+		    d, e, f,
+			0.0, 1.0, 0.0);   
+		return;     
+	}
+}*/
 void Mundo::Dibuja()
 {
 
@@ -59,12 +127,13 @@ void Mundo::Dibuja()
 			0.0, 0, 0.0,      // hacia que punto mira  (0,0,0) 
 			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)    
 			*/
-
+	//funcion_gluLookAt();
 	// Lookat siguiendo al personaje
 	gluLookAt(x_ojo, y_ojo, z_ojo,  // posicion del ojo
 			personaje.GetPos().x, personaje.GetPos().y, personaje.GetPos().z,      // hacia que punto mira, en 
 																				   // este caso al personaje
-			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) 
+		   //personaje.GetPos().x*0.4, 0, personaje.GetPos().z,
+			0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y) */
 
 	//aqui es donde hay que poner el codigo de dibujo
 	//dibujo del suelo
@@ -115,6 +184,7 @@ void Mundo::Mueve()
 	Interaccion::rebotecaja(personaje,caja3);
 	Interaccion::apoyo(personaje, escenario);
 	SeguirPersonaje(); // Desactivar para no seguirlo
+	//funcion_gluLookAt();
 	verpos_consola(); //ESTA FUNCION NOS VA DANDO LA POSICION EN CONSOLA, UTIL PARA LUEGO PONER COSAS
 }
 
@@ -132,6 +202,7 @@ void Mundo::verpos_consola()
 		std::cout << "Manzanas:       "<< contador_manzanas << std::endl;
 		std::cout << "Monstruos muertos:         " << contador_monstruos << std::endl;
 		std::cout << "Quedan " << monstruos.getNumero() << std::endl;
+		std::cout<< c << std::endl;
 		contador_pos = 0;	
 		contador_ciclos++;
 	}
@@ -143,6 +214,10 @@ void Mundo::Inicializa()
 	x_ojo=0;
 	y_ojo=10;
 	z_ojo=20;
+
+	a=x_ojo;
+	b=y_ojo;
+	c=z_ojo;
 
 	inicializaMonstruos(monstruos);
 
@@ -231,3 +306,5 @@ void Mundo::VariasTeclas(bool keystatus[], bool keyspecial[])  // LA FUNCION IMP
 		}
 
 }
+
+

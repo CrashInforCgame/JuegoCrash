@@ -16,6 +16,9 @@ class Mundo
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
+
+	float a,b,c,d,e,f;
+
 	ListaMonstruos monstruos;
 	ListaManzanas manzanas;
 	Escenario escenario;
@@ -39,5 +42,7 @@ public:
 	void Mueve();
 	void Dibuja();
 	void verpos_consola(); //NOS DA LA POSICION DEL PERSONAJE
+	void funcion_gluLookAt();
 	// EN CONSOLA, UTIL PARA COLOCAR MONSTRUOS
+
 };
