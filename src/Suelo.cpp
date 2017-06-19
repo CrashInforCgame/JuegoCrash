@@ -1,6 +1,8 @@
 #include "Suelo.h"
 #include "glut.h"
 #include "math.h"
+#include "ETSIDI.h"
+
 
 void Suelo::setColor( unsigned char r,unsigned char v, unsigned char a)
 {
@@ -20,6 +22,25 @@ void Suelo::Dibuja()
 	glVertex3d(limite4.x,limite4.y,limite4.z);
 	glEnd();
 	glEnable(GL_LIGHTING);
+}
+
+void Suelo::Dibuja2()
+{
+	glEnable(GL_TEXTURE_2D);
+  
+	glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes1/fondo.png").id);
+	glDisable(GL_LIGHTING);
+	glBegin(GL_POLYGON);
+	glColor3f(1,1,1);
+	
+	glTexCoord2d(0,1);		glVertex3f(limite1.x,limite1.y,limite1.z);
+	glTexCoord2d(1,1);		glVertex3f(limite2.x,limite2.y,limite2.z);
+	glTexCoord2d(1,0);		glVertex3f(limite3.x,limite3.y,limite3.z);
+	glTexCoord2d(0,0);		glVertex3f(limite4.x,limite4.y,limite4.z);
+	glEnd();
+
+	glEnable(GL_LIGHTING);	
+	glDisable(GL_TEXTURE_2D);
 }
 
 void Suelo::SetPos(float x1, float y1, float z1,float x2, float y2, float z2,float x3, float y3,

@@ -16,6 +16,7 @@ private:
 public: 	
 	void Dibuja();//Para poder compaginar los limites y que 
 							//el extremo del personaje no pase la pared
+	void Dibuja2();
 	void setColor(unsigned char rojo, unsigned char verde, unsigned char azul);
 	void SetPos(float x1, float y1, float z1,float x2, float y2, float z2,float x3, float y3,
 				 float z3,float x4, float y4, float z4);

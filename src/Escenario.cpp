@@ -106,14 +106,20 @@ Escenario::Escenario()
 	suelo17.setColor(140,50,179);
 	suelo17.SetPos(-5.0F,0,-30.0F,
 		-5.0F,0,5.0F,
-		-5.0F,15,5.0F,
-		-5.0F,15,-30.0F);
+		-5.0F,7,5.0F,
+		-5.0F,7,-30.0F);
 
 	suelo18.setColor(140,50,179);
 	suelo18.SetPos(15.0F,0,-30.0F,
 		-5.0F,0,-30.0F,
-		-5.0F,15,-30.0F,
-		15.0F,15,-30.0F);
+		-5.0F,7,-30.0F,
+		15.0F,7,-30.0F);
+
+	suelo19.setColor(140,50,179);
+	suelo19.SetPos(5.0F,0,-20.0F,
+		5.0F,0,5.0F,
+		5.0F,7,5.0F,
+		5.0F,7,-20.0F);
 
 
 }
@@ -136,8 +142,9 @@ void Escenario::Dibuja()
 	suelo14.Dibuja();
 	suelo15.Dibuja();
 	suelo16.Dibuja();
-	suelo17.Dibuja();
-	suelo18.Dibuja();
+	suelo17.Dibuja2();
+	suelo18.Dibuja2();
+	suelo19.Dibuja2();
 }
 
 /*
