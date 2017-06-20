@@ -40,7 +40,7 @@ void Cristal::SetPos(float x, float y, float z)
 }
 void Cristal::Mueve(float t)
 {
-	//ESTADOS DECRECE 1 CRECE 2
+	//ESTADOS DECRECE 1 CRECE 2n
 	if(radio>0.3) estado=1;
 	
 	if(radio<0.2) estado=2; 
