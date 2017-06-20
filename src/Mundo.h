@@ -9,6 +9,7 @@
 #include "MonstruoSalto.h"
 #include "ListaMonstruos.h"
 #include "ListaManzanas.h"
+#include "Cristal.h"
 
 
 class Mundo

@@ -227,30 +227,17 @@ void Mundo::FuncionInicializa()
 {
 		if(Nivel==1)
 		{
-			escenario+=new Suelo(-5.0F,0,-20.0F,-5.0F,0,5.0F,5.0F,0,5.0F,5.0F,0,-20.0F);
-			escenario+=new Suelo(-5.0F,0,-30.0F,-5.0F,0,-20.0F,25.0F,0,-20.0F,25.0F,0,-30.0F);
-			escenario+=new Suelo(15.0F,0,-50.0F,15.0F,0,-30.0F,25.0F,0,-30.0F,25.0F,0,-50.0F);
-			escenario+=new Suelo(5.0F,0,-50.0F,5.0F,0,-40.0F,15.0F,0,-40.0F,15.0F,0,-50.0F);
-			escenario+=new Suelo(5.0F,0,-70.0F,5.0F,0,-50.0F,15.0F,0,-50.0F,15.0F,0,-70.0F);
-			escenario+=new Suelo(5.0F,3.0F,-100.0F,5.0F,3.0F,-70.0F,15.0F,3.0F,-70.0F,15.0F,3.0F,-100.0F);
-			escenario+=new Suelo(15.0F,3.0F,-100.0F,15.0F,3.0F,-85.0F,50.0F,3.0F,-85.0F,50.0F,3.0F,-100.0F);
-			escenario+=new Suelo(50.0F,6,-100.0F,50.0F,6,-85.0F,58.0F,6,-85.0F,58.0F,6,-100.0F);
-			escenario+=new Suelo(58.0F,9.5,-100.0F,58.0F,9.5,-85.0F,74.0F,9.5,-85.0F,74.0F,9.5,-100.0F);
-			escenario+=new Suelo(74.0F,8,-100.0F,74.0F,8,-85.0F,80.0F,8,-85.0F,80.0F,8,-100.0F);
-			escenario+=new Suelo(80.0F,6,-100.0F,80.0F,6,-85.0F,105.0F,6,-85.0F,105.0F,6,-100.0F);
-			escenario+=new Suelo(90.0F,6,-85.0F,90.0F,6,-78.0F,105.0F,6,-78.0F,105.0F,6,-85.0F);
-			escenario+=new Suelo(90.0F,6,-85.0F,90.0F,6,-78.0F,105.0F,6,-78.0F,105.0F,6,-85.0F);
-			escenario+=new Suelo(90.0F,2,-78.0F,90.0F,2,-68.0F,105.0F,2,-68.0F,105.0F,2,-78.0F);
-			escenario+=new Suelo(90.0F,0,-68.0F,90.0F,0,-45.0F,105.0F,0,-45.0F,105.0F,0,-68.0F);
-			escenario+=new Suelo(90.0F,0,-45.0F,90.0F,0,-35.0F,160.0F,0,-35.0F,160.0F,0,-45.0F);
-			escenario+=new Suelo(140.0F,0,-128.0F,140.0F,0,-55.0F,160.0F,0,-55.0F,160.0F,0,-128.0F);
+			escenario+=new Suelo(-5.0F,0,-50.0F,-5.0F,0,5.0F,5.0F,0,5.0F,5.0F,0,-50.0F);
+			escenario+=new Suelo(-5.0F,-20,-55.0F,-5.0F,-20,-50.0F,5.0F,-20,-50.0F,5.0F,-20,-55.0F);
+			escenario+=new Suelo(-5.0F,0,-85.0F,-5.0F,0,-55.0F,5.0F,0,-55,5.0F,0,-85.0F);
 
-			inicializaMonstruos(monstruos);
+			/*inicializaMonstruos(monstruos);
 			manzanas+=new Manzana(3,-10); // AL USAR NEW MANZANA AHORA LOS PARAMETROS SON: (X,Z,Y=0.3)
 
 			caja1.SetPos(4.5,0.5,-5);
 			caja2.SetPos(4.5,1.5,-5);
-			caja3.SetPos(0.5,0.5,-2);
+			caja3.SetPos(0.5,0.5,-2);*/
+
 		}
 		if(Nivel==2)
 		{
