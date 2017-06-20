@@ -1,10 +1,10 @@
-#include "Mundo.h"
+#include "Menu.h"
 #include "glut.h"
 
 
 bool keystatus[256] = {false}; //PARA USAR TECLAS NORMALES SI ESTAN PULSADAS
 bool keySpecialStates[246] = {false}; // PARA USAR TECLAS ESPECIALES PULSADAS
-Mundo mundo;
+Menu menu;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
@@ -52,7 +52,7 @@ int main(int argc,char* argv[])
 	// Nuestro código para inicializar cosas ajenas a glut
 
 
-	mundo.Inicializa();
+	menu.Inicializa();
 		
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();	
@@ -70,7 +70,7 @@ void OnDraw(void)
 	
 
 
-	mundo.Dibuja();
+	menu.Dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
@@ -107,10 +107,10 @@ void KeySpecialUp(int key, int x_t, int y_t)
 void OnTimer(int value)
 {
 //poner aqui el código de animacion
-	mundo.Mueve();
-	mundo.VariasTeclas(keystatus, keySpecialStates);    // ESTA FUNCION AQUI CONSIGUE QUE PUEDA PULSAR VARIAS TECLAS
+	menu.Mueve();
+	menu.VariasTeclas(keystatus, keySpecialStates);    // ESTA FUNCION AQUI CONSIGUE QUE PUEDA PULSAR VARIAS TECLAS
 	//no borrar estas lineas
-	glutTimerFunc(1,OnTimer,0);
+	glutTimerFunc(8,OnTimer,0);
 	glutPostRedisplay();
 }
 

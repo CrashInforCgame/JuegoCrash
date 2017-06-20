@@ -23,6 +23,5 @@ public:
 	static bool choque(Personaje &h, Manzana &m);
 	static bool choque(Personaje &h, Monstruo &m);
 	static bool ataque(Personaje &h, Monstruo &m);
-	static bool Comprobacion1(Escenario e);
-	static bool Comprobacion2(Personaje h, Escenario e);
+
 };

@@ -19,14 +19,16 @@ class Mundo
 
 	float a,b,c,d,e,f;
 
+	int Nivel;
+
 	ListaMonstruos monstruos;
 	ListaManzanas manzanas;
 	Escenario escenario;
 	Personaje personaje;
-	Personaje personaje2;
 	Caja caja1;
 	Caja caja2;
 	Caja caja3;
+	int Vidas;
 	int contador_pos; //PARA SACAR UNAS POSICIONES EN PANTALLA
 	int contador_ciclos; //CUENTA LAS VECES QUE SE HA IMPRESO EN PANTALLA PARA LIMPIARLA CADA X VECES
 	int contador_manzanas;	//CUENTA MANZANAS COMIDAS
@@ -42,7 +44,9 @@ public:
 	void Mueve();
 	void Dibuja();
 	void verpos_consola(); //NOS DA LA POSICION DEL PERSONAJE
-	void funcion_gluLookAt();
 	// EN CONSOLA, UTIL PARA COLOCAR MONSTRUOS
-
+	bool cargarNivel();
+	void FuncionInicializa();
+	bool getVidas();
+	bool getCristal(); //Función para pasar de nivel al conseguir el premio final
 };

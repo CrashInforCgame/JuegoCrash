@@ -83,8 +83,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CajaNitro.cpp" />
-    <ClCompile Include="CajaTNT.cpp" />
     <ClCompile Include="Mundo.cpp" />
     <ClCompile Include="src\Caja.cpp" />
     <ClCompile Include="src\Escenario.cpp" />
@@ -97,15 +95,12 @@
     <ClCompile Include="src\MonstruoSalto.cpp" />
     <ClCompile Include="src\MonstruoX.cpp" />
     <ClCompile Include="src\MonstruoZ.cpp" />
-    <ClCompile Include="src\Movimientos.cpp" />
     <ClCompile Include="src\Crash.cpp" />
     <ClCompile Include="src\Personaje.cpp" />
     <ClCompile Include="src\Suelo.cpp" />
     <ClCompile Include="src\Vector3D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CajaNitro.h" />
-    <ClInclude Include="CajaTNT.h" />
     <ClInclude Include="src\Caja.h" />
     <ClInclude Include="src\Escenario.h" />
     <ClInclude Include="src\Interaccion.h" />
@@ -117,7 +112,6 @@
     <ClInclude Include="src\MonstruoSalto.h" />
     <ClInclude Include="src\MonstruoX.h" />
     <ClInclude Include="src\MonstruoZ.h" />
-    <ClInclude Include="src\Movimientos.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Personaje.h" />
     <ClInclude Include="src\randomnum.h" />
