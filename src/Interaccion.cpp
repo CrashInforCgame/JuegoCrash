@@ -217,16 +217,4 @@ bool Interaccion::ataque(Personaje &h, Monstruo &m) // es como el
 	return false;
 }
 
-bool Interaccion::Comprobacion1(Escenario e) //método para determinar la orientacion del suelo para el movimiento de cámara
-{
-	if((e.lista[e.plano]->limite4.z==e.lista[e.plano+1]->limite4.z))
-		return true;
-	return false;
-}
 
-bool Interaccion::Comprobacion2(Personaje h, Escenario e) //método para determinar la orientacion del suelo para el movimiento de cámara
-{
-	if((e.lista[e.plano+1]->limite2.z>=h.posicion.z))
-		return true;
-	return false;
-}

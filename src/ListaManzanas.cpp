@@ -68,7 +68,6 @@ void ListaManzanas::eliminar(Manzana *e)
 	  		eliminar(i);
 	  		return;
 		}
-
 }
 
 /*bool ListaManzanas::choque(Personaje &h)

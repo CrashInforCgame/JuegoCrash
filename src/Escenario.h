@@ -5,36 +5,19 @@
 
 class Escenario
 {
-private:
-	Suelo* lista[MAX_SUELOS];
-	Suelo* lista2[MAX_SUELOS];
-	int numero;
-	int numero2;
-	Suelo suelo1;
-	/*Suelo suelo2;
-	Suelo suelo3;
-	Suelo suelo4;
-	Suelo suelo5;
-	Suelo suelo6;
-	Suelo suelo7;
-	Suelo suelo8;
-	Suelo suelo9;
-	Suelo suelo10;
-	Suelo suelo11;
-	Suelo suelo12;
-	Suelo suelo13;
-	Suelo suelo14;
-	Suelo suelo15;
-	Suelo suelo16;
-	Suelo suelo17;
-	Suelo suelo18;
-	Suelo suelo19;*/
-	int plano;
+public:
+	Suelo* lista[MAX_SUELOS];		//Lista para suelos (suelos horizontales)
+	Suelo* lista2[MAX_SUELOS];		//Lista para paredes (suelos verticales)
+	int numero;					    //Número para saber el numero de suelos que tenemos
+	int numero2;					//Número para saber el numero de suelos que tenemos
+	int plano;						//Para saber en que plano nos encontramos
 public:
 	Escenario();
 	void Dibuja(void);
 	bool agregar (Suelo *m);
 	bool agregar2 (Suelo *m);
+	void operator+=(Suelo *m);
+	void eliminar();
 
 friend class Interaccion;
 friend class Mundo;

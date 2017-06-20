@@ -12,16 +12,16 @@ Escenario::Escenario()
 
 	plano=0;
 
-	Suelo *n1=new Suelo;
-	n1->SetPos(-5.0F,0,-30.0F,
+	/*Suelo *n1=new Suelo;
+	n1->SetPos(-5.0F,0,-20.0F,
 		-5.0F,0,5.0F,
 		5.0F,0,5.0F,
-		5.0F,0,-30.0F);
+		5.0F,0,-20.0F);
 	agregar(n1);
 
 	Suelo *n2=new Suelo;
-	n2->SetPos(5.0F,0,-30.0F,
-		5.0F,0,-20.0F,
+	n2->SetPos(-5.0F,0,-30.0F,
+		-5.0F,0,-20.0F,
 		25.0F,0,-20.0F,
 		25.0F,0,-30.0F);
 	agregar(n2);
@@ -129,9 +129,9 @@ Escenario::Escenario()
 		140.0F,0,-55.0F,
 		160.0F,0,-55.0F,
 		160.0F,0,-128.0F);
-	agregar(n17);
+	agregar(n17);*/
 
-	Suelo *p1=new Suelo;
+	/*Suelo *p1=new Suelo;
 	p1->SetPos(-5.0F,0,-30.0F,
 		-5.0F,0,5.0F,
 		-5.0F,4.5,5.0F,
@@ -150,7 +150,7 @@ Escenario::Escenario()
 		5.50F,0,5.0F,
 		5.50F,4.5,5.0F,
 		5.50F,4.5,-16.0F);
-	agregar2(p3);
+	agregar2(p3);*/
 
 }
 
@@ -188,85 +188,17 @@ bool Escenario::agregar2(Suelo *m)
 	return true;
 }
 
-/*
-		SUELO 1
-
-Suelo1.limite1.x=-5.0F;
-Suelo1.limite1.z=-30.0F;
-
-Suelo1.limite2.x=-5.0F;
-Suelo1.limite2.z=5.0F;
-
-Suelo1.limite3.x=5.0F;
-Suelo1.limite3.z=-30.0F;
-
-Suelo1.limite4.x=5.0F;
-Suelo1.limite4.z=5.0F;
-
-(-5.0F,0,-30.0F,-5.0F,0,5.0F,5.0F,0,5.0F,5.0F,0,-30.0F);
-
-		SUELO 2
-
-Suelo2.limite1.x=5.0F;
-Suelo2.limite1.z=-30.0F;
-
-Suelo2.limite2.x=5.0F;
-Suelo2.limite2.z=-20.0F;
-
-Suelo2.limite4.x=25.0F;
-Suelo2.limite4.z=-30.0F;
-
-Suelo2.limite3.x=25.0F;
-Suelo2.limite3.z=-20.0F;
-
-(5.0F,0,-30.0F,5.0F,0,-20.0F,25.0F,0,-20.0F,25.0F,0,-30.0F);
-
-		SUELO 3
-
-Suelo3.limite1.x=15.0F;
-Suelo3.limite1.z=-50.0F;
-
-Suelo3.limite2.x=15.0F;
-Suelo3.limite2.z=-30.0F;
-
-Suelo3.limite4.x=25.0F;
-Suelo3.limite4.z=-50.0F;
-
-Suelo3.limite3.x=25.0F;
-Suelo3.limite3.z=-30.0F;
-
-(15.0F,0,-50.0F,15.0F,0,-30.0F,25.0F,0,-30.0F,25.0F,0,-50.0F);
-
-		SUELO 4
-
-Suelo4.limite1.x=5.0F;
-Suelo4.limite1.z=-50.0F;
-
-Suelo4.limite2.x=5.0F;
-Suelo4.limite2.z=-40.0F;
-
-Suelo4.limite4.x=15.0F;
-Suelo4.limite4.z=-50.0F;
-
-Suelo4.limite3.x=15.0F;
-Suelo4.limite3.z=-40.0F;
-
-(5.0F,0,-50.0F,5.0F,0,-40.0F,15.0F,0,-40.0F,15.0F,0,-50.0F);
-
-		SUELO 5
-
-Suelo5.limite1.x=5.0F;
-Suelo5.limite1.z=-70.0F;
-
-Suelo5.limite2.x=5.0F;
-Suelo5.limite2.z=-50.0F;
-
-Suelo5.limite4.x=15.0F;
-Suelo5.limite4.z=-70.0F;
-
-Suelo5.limite3.x=15.0F;
-Suelo5.limite3.z=-50.0F;
-
-(5.0F,0,-70.0F,5.0F,0,-50.0F,15.0F,0,-50.0F,15.0F,0,-70.0F);
-
-*/
+void Escenario::eliminar()
+{
+	for(int i=0;i<numero;i++)
+		delete lista[i];
+	numero=0;
+	for(int i=0;i<numero2;i++)
+		delete lista2[i];
+	numero2=0;
+	plano=0;
+}
+void Escenario::operator+=(Suelo *m)
+{
+	agregar(m);
+}
