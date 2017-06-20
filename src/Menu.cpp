@@ -18,14 +18,14 @@ void Menu::Dibuja()
 		gluLookAt(0, 7.5, 30, // posicion del ojo
 		0.0, 7.5, 0.0, // hacia que punto mira (0,7.5,0)
 		0.0, 1.0, 0.0); // definimos hacia arriba (eje Y)
-		/*ETSIDI::setTextColor(1,1,0);
+		ETSIDI::setTextColor(1,1,0);
 		ETSIDI::setFont("fuentes/Bitwise.ttf",16);
-		ETSIDI::printxy("Pang 1.1", -5,8);
+		ETSIDI::printxy("PASA EL LABERINTO", -5,8);
 		ETSIDI::setTextColor(1,1,1);
 		ETSIDI::setFont("fuentes/Bitwise.ttf",12);
 		ETSIDI::printxy("PULSE LA TECLA -E- PARA EMPEZAR", -5,7);
 		ETSIDI::printxy("PULSE LA TECLA -S- PARA SALIR", -5,6);
-		ETSIDI::printxy("Hernando & Rodriguez-Losada",2,1);*/
+		ETSIDI::printxy("Alvaro & Nacho",2,1);
 	}
 	else if(estado==JUEGO)
 	{
@@ -33,18 +33,24 @@ void Menu::Dibuja()
 	}
 	else if(estado==GAMEOVER)
 	{
-		mundo.Dibuja();
-		ETSIDI::setTextColor(1,0,0);
-		/*ETSIDI::setFont("fuentes/Bitwise.ttf",16);
+		//mundo.Dibuja();
+		gluLookAt(0, 7.5, 30, // posicion del ojo
+		0.0, 7.5, 0.0, // hacia que punto mira (0,7.5,0)
+		0.0, 1.0, 0.0);
+		ETSIDI::setTextColor(1,1,0);
+		ETSIDI::setFont("fuentes/Bitwise.ttf",16);
 		ETSIDI::printxy("GAMEOVER: Has perdido",-5,10);
-		ETSIDI::printxy("Pulsa -C- para continuar",-5,5);*/
+		ETSIDI::printxy("Pulsa -C- para continuar",-5,5);
 	}
 	else if(estado==FIN)
 	{
 		//mundo.Dibuja();
-		/*ETSIDI::setFont("fuentes/Bitwise.ttf",16);
-		ETSIDI::printxy("ENHORABUENA, ¡Has triunfado!",-5,10);
-		ETSIDI::printxy("Pulsa -C- para continuar",-5,9);*/
+		gluLookAt(0, 7.5, 30, // posicion del ojo
+		0.0, 7.5, 0.0, // hacia que punto mira (0,7.5,0)
+		0.0, 1.0, 0.0);
+		ETSIDI::setFont("fuentes/Bitwise.ttf",16);
+		ETSIDI::printxy("ENHORABUENA, ¡Has triunfado!  SUUUUU!",-5,10);
+		ETSIDI::printxy("Pulsa -C- para continuar",-5,9);
 	}
 }
 

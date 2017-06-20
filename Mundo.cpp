@@ -29,7 +29,7 @@ void inicializaMonstruos(ListaMonstruos &monstruos)  //USAREMOS ESTA FUNCION PAR
 {
 		//Inicializando monstruos para lista
 	
-	/*float y1xz=(new MonstruoZ)->getRadio()-0.3; // LA ALTURA A LA QUE ESTARAN LOS MONSTRUOS X Y Z EN EL PRIMER PLANO
+	float y1xz=(new MonstruoZ)->getRadio()-0.3; // LA ALTURA A LA QUE ESTARAN LOS MONSTRUOS X Y Z EN EL PRIMER PLANO
 	float y2xz=y1xz+3; //ALTURA 2o plano
 	//Monstruos que se mueven en X
 	monstruos+=new MonstruoX(0,y1xz,-17);
@@ -50,7 +50,7 @@ void inicializaMonstruos(ListaMonstruos &monstruos)  //USAREMOS ESTA FUNCION PAR
 	monstruos+=new MonstruoSalto(12.3,y1xz+3,-48);
 	monstruos+=new MonstruoSalto(9,y1xz,-44);
 	monstruos+=new MonstruoSalto(8,y1xz+5,-59);
-*/}
+}
 
 void Mundo::SeguirPersonaje()
 {
@@ -87,14 +87,14 @@ void Mundo::Mueve()
 	personaje.Mueve(0.025f); // Con 25 ms funciona bien la gravedad
 
 	monstruos.Mueve(0.025f);
-	if(monstruos.choque(personaje))
+	if(monstruos.choque(personaje)||(personaje.posicion.y<-2))
 	{
 		std::cout<< "HAS MUERTO" << std::endl;	//AQUI HABRIA QUE PONER QUE PASA SI TE DA
 		monstruos.destruirContenido();
 		inicializaMonstruos(monstruos);
 		Vidas--;
 		escenario.plano=0;//nivel de dificultad, te vuelve al inicio o al principio del suelo donde has muerto
-		personaje.SetPos(0,0,0);
+		personaje.SetPos(0,personaje.radio,0);
 		contador_monstruos=0; // AL RESETEARSE LOS MONSTRUOS TAMBIEN LO HACE LA CUENTA
 	}
 	if(personaje.estado_ataque == 1) //AQUI EL PERSONAJE REVISA LAS INTERACCIONES DE ATAQUE PARA MATAR MONSTRUOS

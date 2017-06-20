@@ -66,12 +66,19 @@ void Interaccion::rebote(Personaje &h, Suelo *s) //FUNCION PLANTEADA PARA TODO
 
 void Interaccion::apoyo(Personaje &h, Escenario e)// se puede optimizar con un contenedor
 {
-	for(int i=0;i<e.numero;i++)
+	if(Interaccion::localizacion2(h,e))
 	{
-		if(e.plano==i)
+		h.apoyo=-10;
+	}
+	else
+	{
+		for(int i=0;i<e.numero;i++)
 		{
-			h.apoyo=e.lista[i]->limite2.y;
-			return;
+			if(e.plano==i)
+			{
+				h.apoyo=e.lista[i]->limite2.y;
+				return;
+			}
 		}
 	}
 }
@@ -88,8 +95,8 @@ bool Interaccion::localizacion2(Personaje &h, Suelo *s) //Para planos con altura
 {
 	if((s->limite1.x)<=h.posicion.x && (s->limite4.x)>=h.posicion.x 
 		&& (s->limite1.z)<=h.posicion.z && (s->limite2.z)>=h.posicion.z
-		&& (s->limite1.y+h.radio)<=(h.posicion.y))//No poner menor o igual, solo menor
-		return 1;
+		&& (s->limite1.y+h.radio)<=(h.posicion.y))
+		return 1;//Si está en este plano devuelve un 1
 	return 0;
 }
 
@@ -97,30 +104,14 @@ bool Interaccion::localizacion2(Personaje &h, Suelo *s) //Para planos con altura
 bool Interaccion::localizacion2(Personaje &h,Escenario &e)
 {
 	for(int i=0;i<e.numero;i++)
-
-		{if(Interaccion::localizacion2(h,e.lista[i])){e.plano=i;return 0;}}
-
-	/*if(Interaccion::localizacion(h,e.suelo1)){e.plano=1;return 0;}
-	if(Interaccion::localizacion(h,e.suelo2)){e.plano=2;return 0;}
-	if(Interaccion::localizacion(h,e.suelo3)){e.plano=3;return 0;}
-	if(Interaccion::localizacion(h,e.suelo4)){e.plano=4;return 0;}
-	if(Interaccion::localizacion(h,e.suelo5)){e.plano=5;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo6)){e.plano=6;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo7)){e.plano=7;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo8)){e.plano=8;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo9)){e.plano=9;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo10)){e.plano=10;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo11)){e.plano=11;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo12)){e.plano=12;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo13)){e.plano=13;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo14)){e.plano=14;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo15)){e.plano=15;return 0;}
-	if(Interaccion::localizacion2(h,e.suelo16)){e.plano=16;return 0;}*/
+	{
+		if(Interaccion::localizacion2(h,e.lista[i])){e.plano=i;return 0;}//si está en este plano devuelve un cero y e.plano sabe donde está
+	}
 	return 1;
 }
 void Interaccion::rebote(Personaje &h, Escenario &e)
 {
-	if(Interaccion::localizacion2(h,e))
+	if(Interaccion::localizacion2(h,e))//si es true es porque no esta en ningun plano y se aplican condiciones del e.plano donde estaba
 	{
 		for(int i=0;i<e.numero;i++)
 		{
@@ -130,58 +121,6 @@ void Interaccion::rebote(Personaje &h, Escenario &e)
 				return;
 			}
 		}
-
-		/*switch(e.plano)
-		{
-		case 1:
-			Interaccion::rebote(h,e.suelo1);
-			break;
-		case 2:
-			Interaccion::rebote(h,e.suelo2);
-			break;
-		case 3:
-			Interaccion::rebote(h,e.suelo3);
-			break;
-		case 4:
-			Interaccion::rebote(h,e.suelo4);
-			break;
-		case 5:
-			Interaccion::rebote(h,e.suelo5);
-			break;
-		case 6:
-			Interaccion::rebote(h,e.suelo6);
-			break;
-		case 7:
-			Interaccion::rebote(h,e.suelo7);
-			break;
-		case 8:
-			Interaccion::rebote(h,e.suelo8);
-			break;
-		case 9:
-			Interaccion::rebote(h,e.suelo9);
-			break;
-		case 10:
-			Interaccion::rebote(h,e.suelo10);
-			break;
-		case 11:
-			Interaccion::rebote(h,e.suelo11);
-			break;
-		case 12:
-			Interaccion::rebote(h,e.suelo12);
-			break;
-		case 13:
-			Interaccion::rebote(h,e.suelo13);
-			break;
-		case 14:
-			Interaccion::rebote(h,e.suelo14);
-			break;
-		case 15:
-			Interaccion::rebote(h,e.suelo15);
-			break;
-		case 16:
-			Interaccion::rebote(h,e.suelo16);
-			break;
-		}*/
 	}
 }
 

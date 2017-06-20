@@ -110,7 +110,7 @@ void OnTimer(int value)
 	menu.Mueve();
 	menu.VariasTeclas(keystatus, keySpecialStates);    // ESTA FUNCION AQUI CONSIGUE QUE PUEDA PULSAR VARIAS TECLAS
 	//no borrar estas lineas
-	glutTimerFunc(1,OnTimer,0);
+	glutTimerFunc(8,OnTimer,0);
 	glutPostRedisplay();
 }
 

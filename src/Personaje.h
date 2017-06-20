@@ -2,7 +2,6 @@
 #include "Vector3D.h"
 #include "ETSIDI.h"
 
-using ETSIDI::SpriteSequence;
 class Personaje
 {
 private:
@@ -12,7 +11,6 @@ private:
 	//float radio;
 	float masa;
 	int cuenta_ataque;
-	SpriteSequence sprite;
 	
 public:
 	int estado_ataque; //ESTADO DEL ATAQUE 0: nada    1: atacando    2: enfriamiento, no puedes atacar hasta que pase un tiempo 
